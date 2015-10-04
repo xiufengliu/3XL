@@ -12,10 +12,10 @@ JDK 6 or above
 PostgreSQL 8.3 or above
 * **setup**
 
-- Download 3XL to the desitination directory, unpack it.
-- Create a database, and a superuser account (superuser account is required to do the COPY);
-- Create a directory for temporarly saving csv files, e.g., /path/to/csv, and the directory for Berkeley DB, e.g., /path/to/bdb;
-- Setup the configuration file /bin/config.xml
+> Download 3XL to the desitination directory, unpack it.
+> Create a database, and a superuser account (superuser account is required to do the COPY);
+> Create a directory for temporarly saving csv files, e.g., /path/to/csv, and the directory for Berkeley DB, e.g., /path/to/bdb;
+> Setup the configuration file /bin/config.xml
 # Run the programs:
 
 Currently, 3XL only supports NTriple data loading.
