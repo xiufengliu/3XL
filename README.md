@@ -12,10 +12,10 @@ JDK 6 or above
 PostgreSQL 8.3 or above
 * **setup**
 
-Download 3XL to the desitination directory, unpack it.
-Create a database, and a superuser account (superuser account is required to do the COPY);
-Create a directory for temporarly saving csv files, e.g., /path/to/csv, and the directory for Berkeley DB, e.g., /path/to/bdb;
-Setup the configuration file /bin/config.xml
+- Download 3XL to the desitination directory, unpack it.
+- Create a database, and a superuser account (superuser account is required to do the COPY);
+- Create a directory for temporarly saving csv files, e.g., /path/to/csv, and the directory for Berkeley DB, e.g., /path/to/bdb;
+- Setup the configuration file /bin/config.xml
 # Run the programs:
 
 Currently, 3XL only supports NTriple data loading.
@@ -26,12 +26,12 @@ Start the client by bin/startclient.sh
 * **Use the command Line**
 
 * Setup the running environment:
-* export LIB=`pwd`/lib
-* export CLASSPATH=.:3xlsystem.jar;$LIB/je-4.0.103.jar:$LIB/commons-collections-3.2.1.jar:$LIB/postgresql-8.3-604.jdbc4.jar:$LIB/owlapi-bin.jar:$LIB/commons-dbutils-1.3.jar:$LIB/SuperCSV-1.52.jar:$LIB/commons-io-1.4.jar
-* Create the database schema:
-* java -cp $CLASSPATH xlsystem.DBMain [--verbose] [--config=/path/to/config.xml]
+- export LIB=`pwd`/lib
+- export CLASSPATH=.:3xlsystem.jar;$LIB/je-4.0.103.jar:$LIB/commons-collections-3.2.1.jar:$LIB/postgresql-8.3-604.jdbc4.jar:$LIB/owlapi-bin.jar:$LIB/commons-dbutils-1.3.jar:$LIB/SuperCSV-1.52.jar:$LIB/commons-io-1.4.jar
+- Create the database schema:
+- java -cp $CLASSPATH xlsystem.DBMain [--verbose] [--config=/path/to/config.xml]
 * *Load:*
-* java -Xms1024m -Xmx2500m -XX:-UseGCOverheadLimit -XX:+UseParallelGC -XX:+UseParallelOldGC -cp $CLASSPATH xlsystem.LoadMain [--timing] [--config=/path/to/config.xml] --src=/path/to/ntriple
+- java -Xms1024m -Xmx2500m -XX:-UseGCOverheadLimit -XX:+UseParallelGC -XX:+UseParallelOldGC -cp $CLASSPATH xlsystem.LoadMain [--timing] [--config=/path/to/config.xml] --src=/path/to/ntriple
 * *Query:*
-* java -cp $CLASSPATH xlsystem.QueryMain [--runmode [single|server]] [--timing] [--config=/path/to/config.xml] --query=/path/to/query.txt
+- java -cp $CLASSPATH xlsystem.QueryMain [--runmode [single|server]] [--timing] [--config=/path/to/config.xml] --query=/path/to/query.txt
  
