@@ -21,12 +21,12 @@ PostgreSQL 8.3 or above
 
 Currently, 3XL only supports NTriple data loading.
 
-1 **Use the GUI client**
+**Use the GUI client**
 
 > - Start the 3XL server by bin/startserver.sh
 > - Start the client by bin/startclient.sh
 
-2 **Use the command Line**
+**Use the command Line**
 
 * **Setup the running environment:**
 
