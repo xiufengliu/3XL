@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>3xlsystem</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>net.sourceforge.texlipse.builder.TexlipseBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>net.sourceforge.texlipse.builder.TexlipseNature</nature>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+		<nature>com.tssap.selena.model.modeling_nature</nature>
+		<nature>com.borland.selena.uml20.uml20_nature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>Suspended Root</name>
+			<type>2</type>
+			<locationURI>SuspendedRootVariable</locationURI>
+		</link>
+	</linkedResources>
+</projectDescription>

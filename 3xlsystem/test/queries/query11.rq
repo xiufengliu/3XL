@@ -1,0 +1,2 @@
+(type ResearchGroup ?X) 
+(subOrganizationOf ?X http://www.Department0.University0.edu)

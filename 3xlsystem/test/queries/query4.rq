@@ -1,0 +1,5 @@
+(type Professor ?X)
+(worksFor ?X http://www.Department0.University0.edu)
+(name ?X ?Y1)
+(emailAddress ?X ?Y2)
+(telephone ?X ?Y3)

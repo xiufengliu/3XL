@@ -1,0 +1,4 @@
+(type FullProfessor ?X)
+(type Department ?Y)
+(worksFor ?X ?Y)
+(subOrganizationOf ?Y http://www.University0.edu)

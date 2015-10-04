@@ -1,0 +1,936 @@
+-------------------------------------------------------------
+/home/xiliu/workspace/3xlsystem/test/lubm/University724_0.owl
+-------------------------------------------------------------
+External Seed=0 Interal Seed=724
+
+CLASS INSTANCE# TOTAL-SO-FAR
+----------------------------
+University 231 231
+Department 1 1
+Faculty 0 0
+Professor 0 0
+FullProfessor 7 7
+AssociateProfessor 13 13
+AssistantProfessor 11 11
+Lecturer 6 6
+Student 0 0
+UndergraduateStudent 417 417
+GraduateStudent 118 118
+TeachingAssistant 27 27
+ResearchAssistant 37 37
+Course 52 52
+GraduateCourse 52 52
+Publication 383 383
+Chair 0 0
+Research 0 0
+ResearchGroup 14 14
+
+TOTAL: 1369
+TOTAL SO FAR: 1369
+
+PROPERTY INSTANCE# TOTAL-SO-FAR
+-------------------------------
+name 1061 1061
+takesCourse 1494 1494
+teacherOf 104 104
+undergraduateDegreeFrom 155 155
+mastersDegreeFrom 37 37
+doctoralDegreeFrom 37 37
+advisor 204 204
+memberOf 535 535
+publicationAuthor 678 678
+headOf 1 1
+teachingAssistantOf 27 27
+researchInterest 31 31
+emailAddress 572 572
+telephone 572 572
+subOrganizationOf 15 15
+worksFor 37 37
+
+TOTAL: 5560
+TOTAL SO FAR: 5560
+
+-------------------------------------------------------------
+/home/xiliu/workspace/3xlsystem/test/lubm/University724_1.owl
+-------------------------------------------------------------
+External Seed=0 Interal Seed=724
+
+CLASS INSTANCE# TOTAL-SO-FAR
+----------------------------
+University 239 470
+Department 1 2
+Faculty 0 0
+Professor 0 0
+FullProfessor 8 15
+AssociateProfessor 13 26
+AssistantProfessor 10 21
+Lecturer 6 12
+Student 0 0
+UndergraduateStudent 507 924
+GraduateStudent 127 245
+TeachingAssistant 28 55
+ResearchAssistant 37 74
+Course 63 115
+GraduateCourse 53 105
+Publication 401 784
+Chair 0 0
+Research 0 0
+ResearchGroup 13 27
+
+TOTAL: 1506
+TOTAL SO FAR: 2875
+
+PROPERTY INSTANCE# TOTAL-SO-FAR
+-------------------------------
+name 1189 2250
+takesCourse 1753 3247
+teacherOf 116 220
+undergraduateDegreeFrom 164 319
+mastersDegreeFrom 37 74
+doctoralDegreeFrom 37 74
+advisor 220 424
+memberOf 634 1169
+publicationAuthor 740 1418
+headOf 1 2
+teachingAssistantOf 28 55
+researchInterest 31 62
+emailAddress 671 1243
+telephone 671 1243
+subOrganizationOf 14 29
+worksFor 37 74
+
+TOTAL: 6343
+TOTAL SO FAR: 11903
+
+-------------------------------------------------------------
+/home/xiliu/workspace/3xlsystem/test/lubm/University724_2.owl
+-------------------------------------------------------------
+External Seed=0 Interal Seed=724
+
+CLASS INSTANCE# TOTAL-SO-FAR
+----------------------------
+University 254 724
+Department 1 3
+Faculty 0 0
+Professor 0 0
+FullProfessor 10 25
+AssociateProfessor 13 39
+AssistantProfessor 9 30
+Lecturer 5 17
+Student 0 0
+UndergraduateStudent 330 1254
+GraduateStudent 142 387
+TeachingAssistant 31 86
+ResearchAssistant 46 120
+Course 50 165
+GraduateCourse 56 161
+Publication 460 1244
+Chair 0 0
+Research 0 0
+ResearchGroup 18 45
+
+TOTAL: 1425
+TOTAL SO FAR: 4300
+
+PROPERTY INSTANCE# TOTAL-SO-FAR
+-------------------------------
+name 1076 3326
+takesCourse 1290 4537
+teacherOf 106 326
+undergraduateDegreeFrom 179 498
+mastersDegreeFrom 37 111
+doctoralDegreeFrom 37 111
+advisor 211 635
+memberOf 472 1641
+publicationAuthor 845 2263
+headOf 1 3
+teachingAssistantOf 31 86
+researchInterest 32 94
+emailAddress 509 1752
+telephone 509 1752
+subOrganizationOf 19 48
+worksFor 37 111
+
+TOTAL: 5391
+TOTAL SO FAR: 17294
+
+-------------------------------------------------------------
+/home/xiliu/workspace/3xlsystem/test/lubm/University724_3.owl
+-------------------------------------------------------------
+External Seed=0 Interal Seed=724
+
+CLASS INSTANCE# TOTAL-SO-FAR
+----------------------------
+University 205 929
+Department 1 4
+Faculty 0 0
+Professor 0 0
+FullProfessor 8 33
+AssociateProfessor 11 50
+AssistantProfessor 9 39
+Lecturer 6 23
+Student 0 0
+UndergraduateStudent 344 1598
+GraduateStudent 102 489
+TeachingAssistant 25 111
+ResearchAssistant 31 151
+Course 50 215
+GraduateCourse 50 211
+Publication 364 1608
+Chair 0 0
+Research 0 0
+ResearchGroup 19 64
+
+TOTAL: 1225
+TOTAL SO FAR: 5525
+
+PROPERTY INSTANCE# TOTAL-SO-FAR
+-------------------------------
+name 945 4271
+takesCourse 1189 5726
+teacherOf 100 426
+undergraduateDegreeFrom 136 634
+mastersDegreeFrom 34 145
+doctoralDegreeFrom 34 145
+advisor 171 806
+memberOf 446 2087
+publicationAuthor 653 2916
+headOf 1 4
+teachingAssistantOf 25 111
+researchInterest 28 122
+emailAddress 480 2232
+telephone 480 2232
+subOrganizationOf 20 68
+worksFor 34 145
+
+TOTAL: 4776
+TOTAL SO FAR: 22070
+
+-------------------------------------------------------------
+/home/xiliu/workspace/3xlsystem/test/lubm/University724_4.owl
+-------------------------------------------------------------
+External Seed=0 Interal Seed=724
+
+CLASS INSTANCE# TOTAL-SO-FAR
+----------------------------
+University 254 1183
+Department 1 5
+Faculty 0 0
+Professor 0 0
+FullProfessor 10 43
+AssociateProfessor 14 64
+AssistantProfessor 11 50
+Lecturer 7 30
+Student 0 0
+UndergraduateStudent 412 2010
+GraduateStudent 127 616
+TeachingAssistant 28 139
+ResearchAssistant 33 184
+Course 69 284
+GraduateCourse 61 272
+Publication 479 2087
+Chair 0 0
+Research 0 0
+ResearchGroup 12 76
+
+TOTAL: 1518
+TOTAL SO FAR: 7043
+
+PROPERTY INSTANCE# TOTAL-SO-FAR
+-------------------------------
+name 1191 5462
+takesCourse 1498 7224
+teacherOf 130 556
+undergraduateDegreeFrom 169 803
+mastersDegreeFrom 42 187
+doctoralDegreeFrom 42 187
+advisor 207 1013
+memberOf 539 2626
+publicationAuthor 816 3732
+headOf 1 5
+teachingAssistantOf 28 139
+researchInterest 35 157
+emailAddress 581 2813
+telephone 581 2813
+subOrganizationOf 13 81
+worksFor 42 187
+
+TOTAL: 5915
+TOTAL SO FAR: 27985
+
+-------------------------------------------------------------
+/home/xiliu/workspace/3xlsystem/test/lubm/University724_5.owl
+-------------------------------------------------------------
+External Seed=0 Interal Seed=724
+
+CLASS INSTANCE# TOTAL-SO-FAR
+----------------------------
+University 258 1441
+Department 1 6
+Faculty 0 0
+Professor 0 0
+FullProfessor 10 53
+AssociateProfessor 11 75
+AssistantProfessor 10 60
+Lecturer 7 37
+Student 0 0
+UndergraduateStudent 426 2436
+GraduateStudent 143 759
+TeachingAssistant 35 174
+ResearchAssistant 36 220
+Course 56 340
+GraduateCourse 55 327
+Publication 426 2513
+Chair 0 0
+Research 0 0
+ResearchGroup 19 95
+
+TOTAL: 1493
+TOTAL SO FAR: 8536
+
+PROPERTY INSTANCE# TOTAL-SO-FAR
+-------------------------------
+name 1145 6607
+takesCourse 1546 8770
+teacherOf 111 667
+undergraduateDegreeFrom 181 984
+mastersDegreeFrom 38 225
+doctoralDegreeFrom 38 225
+advisor 230 1243
+memberOf 569 3195
+publicationAuthor 759 4491
+headOf 1 6
+teachingAssistantOf 35 174
+researchInterest 31 188
+emailAddress 607 3420
+telephone 607 3420
+subOrganizationOf 20 101
+worksFor 38 225
+
+TOTAL: 5956
+TOTAL SO FAR: 33941
+
+-------------------------------------------------------------
+/home/xiliu/workspace/3xlsystem/test/lubm/University724_6.owl
+-------------------------------------------------------------
+External Seed=0 Interal Seed=724
+
+CLASS INSTANCE# TOTAL-SO-FAR
+----------------------------
+University 228 1669
+Department 1 7
+Faculty 0 0
+Professor 0 0
+FullProfessor 7 60
+AssociateProfessor 11 86
+AssistantProfessor 11 71
+Lecturer 6 43
+Student 0 0
+UndergraduateStudent 433 2869
+GraduateStudent 122 881
+TeachingAssistant 26 200
+ResearchAssistant 32 252
+Course 53 393
+GraduateCourse 53 380
+Publication 357 2870
+Chair 0 0
+Research 0 0
+ResearchGroup 15 110
+
+TOTAL: 1355
+TOTAL SO FAR: 9891
+
+PROPERTY INSTANCE# TOTAL-SO-FAR
+-------------------------------
+name 1054 7661
+takesCourse 1543 10313
+teacherOf 106 773
+undergraduateDegreeFrom 157 1141
+mastersDegreeFrom 35 260
+doctoralDegreeFrom 35 260
+advisor 198 1441
+memberOf 555 3750
+publicationAuthor 679 5170
+headOf 1 7
+teachingAssistantOf 26 200
+researchInterest 29 217
+emailAddress 590 4010
+telephone 590 4010
+subOrganizationOf 16 117
+worksFor 35 260
+
+TOTAL: 5649
+TOTAL SO FAR: 39590
+
+-------------------------------------------------------------
+/home/xiliu/workspace/3xlsystem/test/lubm/University724_7.owl
+-------------------------------------------------------------
+External Seed=0 Interal Seed=724
+
+CLASS INSTANCE# TOTAL-SO-FAR
+----------------------------
+University 231 1900
+Department 1 8
+Faculty 0 0
+Professor 0 0
+FullProfessor 10 70
+AssociateProfessor 14 100
+AssistantProfessor 8 79
+Lecturer 5 48
+Student 0 0
+UndergraduateStudent 455 3324
+GraduateStudent 119 1000
+TeachingAssistant 29 229
+ResearchAssistant 29 281
+Course 54 447
+GraduateCourse 53 433
+Publication 429 3299
+Chair 0 0
+Research 0 0
+ResearchGroup 14 124
+
+TOTAL: 1451
+TOTAL SO FAR: 11342
+
+PROPERTY INSTANCE# TOTAL-SO-FAR
+-------------------------------
+name 1148 8809
+takesCourse 1604 11917
+teacherOf 107 880
+undergraduateDegreeFrom 156 1297
+mastersDegreeFrom 37 297
+doctoralDegreeFrom 37 297
+advisor 205 1646
+memberOf 574 4324
+publicationAuthor 755 5925
+headOf 1 8
+teachingAssistantOf 29 229
+researchInterest 32 249
+emailAddress 611 4621
+telephone 611 4621
+subOrganizationOf 15 132
+worksFor 37 297
+
+TOTAL: 5959
+TOTAL SO FAR: 45549
+
+-------------------------------------------------------------
+/home/xiliu/workspace/3xlsystem/test/lubm/University724_8.owl
+-------------------------------------------------------------
+External Seed=0 Interal Seed=724
+
+CLASS INSTANCE# TOTAL-SO-FAR
+----------------------------
+University 216 2116
+Department 1 9
+Faculty 0 0
+Professor 0 0
+FullProfessor 7 77
+AssociateProfessor 10 110
+AssistantProfessor 9 88
+Lecturer 6 54
+Student 0 0
+UndergraduateStudent 257 3581
+GraduateStudent 119 1119
+TeachingAssistant 29 258
+ResearchAssistant 34 315
+Course 49 496
+GraduateCourse 51 484
+Publication 323 3622
+Chair 0 0
+Research 0 0
+ResearchGroup 19 143
+
+TOTAL: 1130
+TOTAL SO FAR: 12472
+
+PROPERTY INSTANCE# TOTAL-SO-FAR
+-------------------------------
+name 832 9641
+takesCourse 986 12903
+teacherOf 100 980
+undergraduateDegreeFrom 151 1448
+mastersDegreeFrom 32 329
+doctoralDegreeFrom 32 329
+advisor 175 1821
+memberOf 376 4700
+publicationAuthor 566 6491
+headOf 1 9
+teachingAssistantOf 29 258
+researchInterest 26 275
+emailAddress 408 5029
+telephone 408 5029
+subOrganizationOf 20 152
+worksFor 32 329
+
+TOTAL: 4174
+TOTAL SO FAR: 49723
+
+-------------------------------------------------------------
+/home/xiliu/workspace/3xlsystem/test/lubm/University724_9.owl
+-------------------------------------------------------------
+External Seed=0 Interal Seed=724
+
+CLASS INSTANCE# TOTAL-SO-FAR
+----------------------------
+University 216 2332
+Department 1 10
+Faculty 0 0
+Professor 0 0
+FullProfessor 8 85
+AssociateProfessor 13 123
+AssistantProfessor 8 96
+Lecturer 6 60
+Student 0 0
+UndergraduateStudent 433 4014
+GraduateStudent 110 1229
+TeachingAssistant 22 280
+ResearchAssistant 27 342
+Course 48 544
+GraduateCourse 51 535
+Publication 372 3994
+Chair 0 0
+Research 0 0
+ResearchGroup 11 154
+
+TOTAL: 1326
+TOTAL SO FAR: 13798
+
+PROPERTY INSTANCE# TOTAL-SO-FAR
+-------------------------------
+name 1050 10691
+takesCourse 1537 14440
+teacherOf 99 1079
+undergraduateDegreeFrom 145 1593
+mastersDegreeFrom 35 364
+doctoralDegreeFrom 35 364
+advisor 176 1997
+memberOf 543 5243
+publicationAuthor 672 7163
+headOf 1 10
+teachingAssistantOf 22 280
+researchInterest 29 304
+emailAddress 578 5607
+telephone 578 5607
+subOrganizationOf 12 164
+worksFor 35 364
+
+TOTAL: 5547
+TOTAL SO FAR: 55270
+
+--------------------------------------------------------------
+/home/xiliu/workspace/3xlsystem/test/lubm/University724_10.owl
+--------------------------------------------------------------
+External Seed=0 Interal Seed=724
+
+CLASS INSTANCE# TOTAL-SO-FAR
+----------------------------
+University 226 2558
+Department 1 11
+Faculty 0 0
+Professor 0 0
+FullProfessor 7 92
+AssociateProfessor 11 134
+AssistantProfessor 11 107
+Lecturer 6 66
+Student 0 0
+UndergraduateStudent 397 4411
+GraduateStudent 120 1349
+TeachingAssistant 30 310
+ResearchAssistant 39 381
+Course 56 600
+GraduateCourse 51 586
+Publication 388 4382
+Chair 0 0
+Research 0 0
+ResearchGroup 11 165
+
+TOTAL: 1354
+TOTAL SO FAR: 15152
+
+PROPERTY INSTANCE# TOTAL-SO-FAR
+-------------------------------
+name 1048 11739
+takesCourse 1449 15889
+teacherOf 107 1186
+undergraduateDegreeFrom 155 1748
+mastersDegreeFrom 35 399
+doctoralDegreeFrom 35 399
+advisor 212 2209
+memberOf 517 5760
+publicationAuthor 677 7840
+headOf 1 11
+teachingAssistantOf 30 310
+researchInterest 29 333
+emailAddress 552 6159
+telephone 552 6159
+subOrganizationOf 12 176
+worksFor 35 399
+
+TOTAL: 5446
+TOTAL SO FAR: 60716
+
+--------------------------------------------------------------
+/home/xiliu/workspace/3xlsystem/test/lubm/University724_11.owl
+--------------------------------------------------------------
+External Seed=0 Interal Seed=724
+
+CLASS INSTANCE# TOTAL-SO-FAR
+----------------------------
+University 227 2785
+Department 1 12
+Faculty 0 0
+Professor 0 0
+FullProfessor 7 99
+AssociateProfessor 11 145
+AssistantProfessor 10 117
+Lecturer 7 73
+Student 0 0
+UndergraduateStudent 289 4700
+GraduateStudent 121 1470
+TeachingAssistant 24 334
+ResearchAssistant 32 413
+Course 52 652
+GraduateCourse 50 636
+Publication 379 4761
+Chair 0 0
+Research 0 0
+ResearchGroup 14 179
+
+TOTAL: 1224
+TOTAL SO FAR: 16376
+
+PROPERTY INSTANCE# TOTAL-SO-FAR
+-------------------------------
+name 927 12666
+takesCourse 1125 17014
+teacherOf 102 1288
+undergraduateDegreeFrom 156 1904
+mastersDegreeFrom 35 434
+doctoralDegreeFrom 35 434
+advisor 185 2394
+memberOf 410 6170
+publicationAuthor 751 8591
+headOf 1 12
+teachingAssistantOf 24 334
+researchInterest 28 361
+emailAddress 445 6604
+telephone 445 6604
+subOrganizationOf 15 191
+worksFor 35 434
+
+TOTAL: 4719
+TOTAL SO FAR: 65435
+
+--------------------------------------------------------------
+/home/xiliu/workspace/3xlsystem/test/lubm/University724_12.owl
+--------------------------------------------------------------
+External Seed=0 Interal Seed=724
+
+CLASS INSTANCE# TOTAL-SO-FAR
+----------------------------
+University 227 3012
+Department 1 13
+Faculty 0 0
+Professor 0 0
+FullProfessor 8 107
+AssociateProfessor 11 156
+AssistantProfessor 11 128
+Lecturer 6 79
+Student 0 0
+UndergraduateStudent 416 5116
+GraduateStudent 118 1588
+TeachingAssistant 23 357
+ResearchAssistant 36 449
+Course 54 706
+GraduateCourse 54 690
+Publication 388 5149
+Chair 0 0
+Research 0 0
+ResearchGroup 16 195
+
+TOTAL: 1369
+TOTAL SO FAR: 17745
+
+PROPERTY INSTANCE# TOTAL-SO-FAR
+-------------------------------
+name 1067 13733
+takesCourse 1472 18486
+teacherOf 108 1396
+undergraduateDegreeFrom 154 2058
+mastersDegreeFrom 36 470
+doctoralDegreeFrom 36 470
+advisor 199 2593
+memberOf 534 6704
+publicationAuthor 675 9266
+headOf 1 13
+teachingAssistantOf 23 357
+researchInterest 30 391
+emailAddress 570 7174
+telephone 570 7174
+subOrganizationOf 17 208
+worksFor 36 470
+
+TOTAL: 5528
+TOTAL SO FAR: 70963
+
+--------------------------------------------------------------
+/home/xiliu/workspace/3xlsystem/test/lubm/University724_13.owl
+--------------------------------------------------------------
+External Seed=0 Interal Seed=724
+
+CLASS INSTANCE# TOTAL-SO-FAR
+----------------------------
+University 258 3270
+Department 1 14
+Faculty 0 0
+Professor 0 0
+FullProfessor 10 117
+AssociateProfessor 12 168
+AssistantProfessor 10 138
+Lecturer 5 84
+Student 0 0
+UndergraduateStudent 323 5439
+GraduateStudent 146 1734
+TeachingAssistant 33 390
+ResearchAssistant 38 487
+Course 55 761
+GraduateCourse 54 744
+Publication 422 5571
+Chair 0 0
+Research 0 0
+ResearchGroup 12 207
+
+TOTAL: 1379
+TOTAL SO FAR: 19124
+
+PROPERTY INSTANCE# TOTAL-SO-FAR
+-------------------------------
+name 1038 14771
+takesCourse 1240 19726
+teacherOf 109 1505
+undergraduateDegreeFrom 183 2241
+mastersDegreeFrom 37 507
+doctoralDegreeFrom 37 507
+advisor 210 2803
+memberOf 469 7173
+publicationAuthor 835 10101
+headOf 1 14
+teachingAssistantOf 33 390
+researchInterest 32 423
+emailAddress 506 7680
+telephone 506 7680
+subOrganizationOf 13 221
+worksFor 37 507
+
+TOTAL: 5286
+TOTAL SO FAR: 76249
+
+--------------------------------------------------------------
+/home/xiliu/workspace/3xlsystem/test/lubm/University724_14.owl
+--------------------------------------------------------------
+External Seed=0 Interal Seed=724
+
+CLASS INSTANCE# TOTAL-SO-FAR
+----------------------------
+University 243 3513
+Department 1 15
+Faculty 0 0
+Professor 0 0
+FullProfessor 8 125
+AssociateProfessor 11 179
+AssistantProfessor 9 147
+Lecturer 7 91
+Student 0 0
+UndergraduateStudent 409 5848
+GraduateStudent 137 1871
+TeachingAssistant 30 420
+ResearchAssistant 41 528
+Course 53 814
+GraduateCourse 53 797
+Publication 376 5947
+Chair 0 0
+Research 0 0
+ResearchGroup 14 221
+
+TOTAL: 1392
+TOTAL SO FAR: 20516
+
+PROPERTY INSTANCE# TOTAL-SO-FAR
+-------------------------------
+name 1064 15835
+takesCourse 1498 21224
+teacherOf 106 1611
+undergraduateDegreeFrom 172 2413
+mastersDegreeFrom 35 542
+doctoralDegreeFrom 35 542
+advisor 217 3020
+memberOf 546 7719
+publicationAuthor 727 10828
+headOf 1 15
+teachingAssistantOf 30 420
+researchInterest 28 451
+emailAddress 581 8261
+telephone 581 8261
+subOrganizationOf 15 236
+worksFor 35 542
+
+TOTAL: 5671
+TOTAL SO FAR: 81920
+
+--------------------------------------------------------------
+/home/xiliu/workspace/3xlsystem/test/lubm/University724_15.owl
+--------------------------------------------------------------
+External Seed=0 Interal Seed=724
+
+CLASS INSTANCE# TOTAL-SO-FAR
+----------------------------
+University 234 3747
+Department 1 16
+Faculty 0 0
+Professor 0 0
+FullProfessor 7 132
+AssociateProfessor 13 192
+AssistantProfessor 9 156
+Lecturer 6 97
+Student 0 0
+UndergraduateStudent 351 6199
+GraduateStudent 128 1999
+TeachingAssistant 26 446
+ResearchAssistant 33 561
+Course 60 874
+GraduateCourse 53 850
+Publication 377 6324
+Chair 0 0
+Research 0 0
+ResearchGroup 12 233
+
+TOTAL: 1310
+TOTAL SO FAR: 21826
+
+PROPERTY INSTANCE# TOTAL-SO-FAR
+-------------------------------
+name 1005 16840
+takesCourse 1312 22536
+teacherOf 113 1724
+undergraduateDegreeFrom 163 2576
+mastersDegreeFrom 35 577
+doctoralDegreeFrom 35 577
+advisor 195 3215
+memberOf 479 8198
+publicationAuthor 722 11550
+headOf 1 16
+teachingAssistantOf 26 446
+researchInterest 29 480
+emailAddress 514 8775
+telephone 514 8775
+subOrganizationOf 13 249
+worksFor 35 577
+
+TOTAL: 5191
+TOTAL SO FAR: 87111
+
+--------------------------------------------------------------
+/home/xiliu/workspace/3xlsystem/test/lubm/University724_16.owl
+--------------------------------------------------------------
+External Seed=0 Interal Seed=724
+
+CLASS INSTANCE# TOTAL-SO-FAR
+----------------------------
+University 253 4000
+Department 1 17
+Faculty 0 0
+Professor 0 0
+FullProfessor 9 141
+AssociateProfessor 14 206
+AssistantProfessor 9 165
+Lecturer 6 103
+Student 0 0
+UndergraduateStudent 316 6515
+GraduateStudent 138 2137
+TeachingAssistant 34 480
+ResearchAssistant 42 603
+Course 58 932
+GraduateCourse 50 900
+Publication 414 6738
+Chair 0 0
+Research 0 0
+ResearchGroup 20 253
+
+TOTAL: 1364
+TOTAL SO FAR: 23190
+
+PROPERTY INSTANCE# TOTAL-SO-FAR
+-------------------------------
+name 1015 17855
+takesCourse 1232 23768
+teacherOf 108 1832
+undergraduateDegreeFrom 176 2752
+mastersDegreeFrom 38 615
+doctoralDegreeFrom 38 615
+advisor 204 3419
+memberOf 454 8652
+publicationAuthor 769 12319
+headOf 1 17
+teachingAssistantOf 34 480
+researchInterest 32 512
+emailAddress 492 9267
+telephone 492 9267
+subOrganizationOf 21 270
+worksFor 38 615
+
+TOTAL: 5144
+TOTAL SO FAR: 92255
+
+--------------------------------------------------------------
+/home/xiliu/workspace/3xlsystem/test/lubm/University724_17.owl
+--------------------------------------------------------------
+External Seed=0 Interal Seed=724
+
+CLASS INSTANCE# TOTAL-SO-FAR
+----------------------------
+University 205 4205
+Department 1 18
+Faculty 0 0
+Professor 0 0
+FullProfessor 10 151
+AssociateProfessor 11 217
+AssistantProfessor 8 173
+Lecturer 5 108
+Student 0 0
+UndergraduateStudent 457 6972
+GraduateStudent 102 2239
+TeachingAssistant 22 502
+ResearchAssistant 25 628
+Course 50 982
+GraduateCourse 48 948
+Publication 372 7110
+Chair 0 0
+Research 0 0
+ResearchGroup 18 271
+
+TOTAL: 1334
+TOTAL SO FAR: 24524
+
+PROPERTY INSTANCE# TOTAL-SO-FAR
+-------------------------------
+name 1064 18919
+takesCourse 1588 25356
+teacherOf 98 1930
+undergraduateDegreeFrom 136 2888
+mastersDegreeFrom 34 649
+doctoralDegreeFrom 34 649
+advisor 189 3608
+memberOf 559 9211
+publicationAuthor 636 12955
+headOf 1 18
+teachingAssistantOf 22 502
+researchInterest 29 541
+emailAddress 593 9860
+telephone 593 9860
+subOrganizationOf 19 289
+worksFor 34 649
+
+TOTAL: 5629
+TOTAL SO FAR: 97884
+

@@ -1,0 +1,473 @@
+Config: /home/xiliu/workspace/3xlsystem/config/config.xml
+OWL: file:///home/xiliu/Dropbox/3xlsystem/src/xlsystem/ontology/eiao_original.owl
+DROP TABLE Thing CASCADE;
+CREATE TABLE Thing(id bigint,uri varchar);
+CREATE UNIQUE INDEX idx_Thing_id ON Thing(id);
+
+-----------------------------------
+DROP TABLE result CASCADE;
+CREATE TABLE result(barrierindicator float,validity varchar) INHERITS (Thing);
+CREATE UNIQUE INDEX idx_result_id ON result(id);
+
+-----------------------------------
+DROP TABLE testsubject CASCADE;
+CREATE TABLE testsubject(pdate varchar,title varchar,calculatedsize int) INHERITS (Thing);
+CREATE UNIQUE INDEX idx_testsubject_id ON testsubject(id);
+
+-----------------------------------
+DROP TABLE rangelocation_pagesurvey CASCADE;
+DROP TABLE rangelocation_page CASCADE;
+DROP TABLE rangelocation CASCADE;
+CREATE TABLE rangelocation_pagesurvey(id bigint, pagesurvey bigint);
+CREATE TABLE rangelocation_page(id bigint, page varchar);
+CREATE TABLE rangelocation(startpointer bigint,resource varchar) INHERITS (Thing);
+CREATE INDEX idx_rangelocation_pagesurvey_id ON rangelocation_pagesurvey(id);
+CREATE INDEX idx_rangelocation_page_id ON rangelocation_page(id);
+CREATE UNIQUE INDEX idx_rangelocation_id ON rangelocation(id);
+
+-----------------------------------
+DROP TABLE assertion CASCADE;
+CREATE TABLE assertion(requirement bigint,subject bigint,singlelocation bigint,result bigint,assertedby bigint,mode varchar) INHERITS (Thing);
+CREATE UNIQUE INDEX idx_assertion_id ON assertion(id);
+
+-----------------------------------
+DROP TABLE header_headeretag CASCADE;
+DROP TABLE header_headerlastmodified CASCADE;
+DROP TABLE header_headercontenttype CASCADE;
+DROP TABLE header_headerserver CASCADE;
+DROP TABLE header_headerxpoweredby CASCADE;
+DROP TABLE header_headerdate CASCADE;
+DROP TABLE header_headercontentlength CASCADE;
+DROP TABLE header_headersetcookie CASCADE;
+DROP TABLE header_headercachecontrol CASCADE;
+DROP TABLE header_headercontentlocation CASCADE;
+DROP TABLE header CASCADE;
+CREATE TABLE header_headeretag(id bigint, headeretag varchar);
+CREATE TABLE header_headerlastmodified(id bigint, headerlastmodified varchar);
+CREATE TABLE header_headercontenttype(id bigint, headercontenttype varchar);
+CREATE TABLE header_headerserver(id bigint, headerserver varchar);
+CREATE TABLE header_headerxpoweredby(id bigint, headerxpoweredby varchar);
+CREATE TABLE header_headerdate(id bigint, headerdate varchar);
+CREATE TABLE header_headercontentlength(id bigint, headercontentlength varchar);
+CREATE TABLE header_headersetcookie(id bigint, headersetcookie varchar);
+CREATE TABLE header_headercachecontrol(id bigint, headercachecontrol varchar);
+CREATE TABLE header_headercontentlocation(id bigint, headercontentlocation varchar);
+CREATE TABLE header(headeracceptranges varchar,headeriisexport varchar,headermicrosoftofficewebserver varchar,headertransferencoding varchar,headerpragma varchar,headerxaspnetversion varchar,headerexpires varchar,headerxpad varchar,headerconnection varchar,headervary varchar,headerp3p varchar) INHERITS (Thing);
+CREATE INDEX idx_header_headeretag_id ON header_headeretag(id);
+CREATE INDEX idx_header_headerlastmodified_id ON header_headerlastmodified(id);
+CREATE INDEX idx_header_headercontenttype_id ON header_headercontenttype(id);
+CREATE INDEX idx_header_headerserver_id ON header_headerserver(id);
+CREATE INDEX idx_header_headerxpoweredby_id ON header_headerxpoweredby(id);
+CREATE INDEX idx_header_headerdate_id ON header_headerdate(id);
+CREATE INDEX idx_header_headercontentlength_id ON header_headercontentlength(id);
+CREATE INDEX idx_header_headersetcookie_id ON header_headersetcookie(id);
+CREATE INDEX idx_header_headercachecontrol_id ON header_headercachecontrol(id);
+CREATE INDEX idx_header_headercontentlocation_id ON header_headercontentlocation(id);
+CREATE UNIQUE INDEX idx_header_id ON header(id);
+
+-----------------------------------
+DROP TABLE sitesurvey_barrierindicator CASCADE;
+DROP TABLE sitesurvey_pagesurvey CASCADE;
+DROP TABLE sitesurvey_scenario CASCADE;
+DROP TABLE sitesurvey_urlcount CASCADE;
+DROP TABLE sitesurvey_variance CASCADE;
+DROP TABLE sitesurvey_website CASCADE;
+DROP TABLE sitesurvey_errormargin CASCADE;
+DROP TABLE sitesurvey CASCADE;
+CREATE TABLE sitesurvey_barrierindicator(id bigint, barrierindicator float);
+CREATE TABLE sitesurvey_pagesurvey(id bigint, pagesurvey bigint);
+CREATE TABLE sitesurvey_scenario(id bigint, scenario bigint);
+CREATE TABLE sitesurvey_urlcount(id bigint, urlcount varchar);
+CREATE TABLE sitesurvey_variance(id bigint, variance varchar);
+CREATE TABLE sitesurvey_website(id bigint, website varchar);
+CREATE TABLE sitesurvey_errormargin(id bigint, errormargin varchar);
+CREATE TABLE sitesurvey(unreliablewarning varchar,basedownloaddir varchar) INHERITS (Thing);
+CREATE INDEX idx_sitesurvey_barrierindicator_id ON sitesurvey_barrierindicator(id);
+CREATE INDEX idx_sitesurvey_pagesurvey_id ON sitesurvey_pagesurvey(id);
+CREATE INDEX idx_sitesurvey_scenario_id ON sitesurvey_scenario(id);
+CREATE INDEX idx_sitesurvey_urlcount_id ON sitesurvey_urlcount(id);
+CREATE INDEX idx_sitesurvey_variance_id ON sitesurvey_variance(id);
+CREATE INDEX idx_sitesurvey_website_id ON sitesurvey_website(id);
+CREATE INDEX idx_sitesurvey_errormargin_id ON sitesurvey_errormargin(id);
+CREATE UNIQUE INDEX idx_sitesurvey_id ON sitesurvey(id);
+
+-----------------------------------
+DROP TABLE software CASCADE;
+CREATE TABLE software(title varchar,description varchar,hasversion varchar) INHERITS (Thing);
+CREATE UNIQUE INDEX idx_software_id ON software(id);
+
+-----------------------------------
+DROP TABLE testrun CASCADE;
+CREATE TABLE testrun(startdate varchar,sitesurvey bigint) INHERITS (Thing);
+CREATE UNIQUE INDEX idx_testrun_id ON testrun(id);
+
+-----------------------------------
+DROP TABLE singlelocation CASCADE;
+CREATE TABLE singlelocation(line int,pcolumn int) INHERITS (Thing);
+CREATE UNIQUE INDEX idx_singlelocation_id ON singlelocation(id);
+
+-----------------------------------
+DROP TABLE scenario_barrierindicator CASCADE;
+DROP TABLE scenario_rangelocation CASCADE;
+DROP TABLE scenario CASCADE;
+CREATE TABLE scenario_barrierindicator(id bigint, barrierindicator float);
+CREATE TABLE scenario_rangelocation(id bigint, rangelocation bigint);
+CREATE TABLE scenario(startpointer bigint,typeofscenario varchar) INHERITS (Thing);
+CREATE INDEX idx_scenario_barrierindicator_id ON scenario_barrierindicator(id);
+CREATE INDEX idx_scenario_rangelocation_id ON scenario_rangelocation(id);
+CREATE UNIQUE INDEX idx_scenario_id ON scenario(id);
+
+-----------------------------------
+DROP TABLE pagesurvey_webcacheurl CASCADE;
+DROP TABLE pagesurvey_doctype CASCADE;
+DROP TABLE pagesurvey_metadata CASCADE;
+DROP TABLE pagesurvey_fullurl CASCADE;
+DROP TABLE pagesurvey_downloaded CASCADE;
+DROP TABLE pagesurvey_authoringtool CASCADE;
+DROP TABLE pagesurvey_testsubject CASCADE;
+DROP TABLE pagesurvey_asserts CASCADE;
+DROP TABLE pagesurvey CASCADE;
+CREATE TABLE pagesurvey_webcacheurl(id bigint, webcacheurl varchar);
+CREATE TABLE pagesurvey_doctype(id bigint, doctype varchar);
+CREATE TABLE pagesurvey_metadata(id bigint, metadata bigint);
+CREATE TABLE pagesurvey_fullurl(id bigint, fullurl varchar);
+CREATE TABLE pagesurvey_downloaded(id bigint, downloaded varchar);
+CREATE TABLE pagesurvey_authoringtool(id bigint, authoringtool varchar);
+CREATE TABLE pagesurvey_testsubject(id bigint, testsubject bigint);
+CREATE TABLE pagesurvey_asserts(id bigint, asserts bigint);
+CREATE TABLE pagesurvey(header bigint) INHERITS (Thing);
+CREATE INDEX idx_pagesurvey_webcacheurl_id ON pagesurvey_webcacheurl(id);
+CREATE INDEX idx_pagesurvey_doctype_id ON pagesurvey_doctype(id);
+CREATE INDEX idx_pagesurvey_metadata_id ON pagesurvey_metadata(id);
+CREATE INDEX idx_pagesurvey_fullurl_id ON pagesurvey_fullurl(id);
+CREATE INDEX idx_pagesurvey_downloaded_id ON pagesurvey_downloaded(id);
+CREATE INDEX idx_pagesurvey_authoringtool_id ON pagesurvey_authoringtool(id);
+CREATE INDEX idx_pagesurvey_testsubject_id ON pagesurvey_testsubject(id);
+CREATE INDEX idx_pagesurvey_asserts_id ON pagesurvey_asserts(id);
+CREATE UNIQUE INDEX idx_pagesurvey_id ON pagesurvey(id);
+
+-----------------------------------
+DROP TABLE testrequirement CASCADE;
+CREATE TABLE testrequirement(title varchar,description varchar) INHERITS (Thing);
+CREATE UNIQUE INDEX idx_testrequirement_id ON testrequirement(id);
+
+-----------------------------------
+DROP TABLE runs CASCADE;
+CREATE TABLE runs(testrun varchar) INHERITS (Thing);
+CREATE UNIQUE INDEX idx_runs_id ON runs(id);
+
+-----------------------------------
+DROP TABLE startpointer CASCADE;
+CREATE TABLE startpointer(line int,pcolumn int,resource varchar) INHERITS (Thing);
+CREATE UNIQUE INDEX idx_startpointer_id ON startpointer(id);
+
+-----------------------------------
+DROP TABLE metadata CASCADE;
+CREATE TABLE metadata(value varchar,subject bigint,singlelocation bigint,ptype varchar) INHERITS (Thing);
+CREATE UNIQUE INDEX idx_metadata_id ON metadata(id);
+
+-----------------------------------
+DROP TABLE xl_metadata CASCADE
+CREATE TABLE xl_metadata(param varchar,value varchar)
+INSERT INTO xl_metadata(param, value) VALUES ('testsubject', '')
+INSERT INTO xl_metadata(param, value) VALUES ('headeriisexport', '')
+INSERT INTO xl_metadata(param, value) VALUES ('headermicrosoftofficewebserver', '')
+INSERT INTO xl_metadata(param, value) VALUES ('headerlastmodified', '')
+INSERT INTO xl_metadata(param, value) VALUES ('headercontentlength', '')
+INSERT INTO xl_metadata(param, value) VALUES ('basedownloaddir', '')
+INSERT INTO xl_metadata(param, value) VALUES ('barrierindicator', '')
+INSERT INTO xl_metadata(param, value) VALUES ('rangelocation', '')
+INSERT INTO xl_metadata(param, value) VALUES ('pdate', '')
+INSERT INTO xl_metadata(param, value) VALUES ('headeretag', '')
+INSERT INTO xl_metadata(param, value) VALUES ('headerxpoweredby', '')
+INSERT INTO xl_metadata(param, value) VALUES ('page', '')
+INSERT INTO xl_metadata(param, value) VALUES ('validity', '')
+INSERT INTO xl_metadata(param, value) VALUES ('description', '')
+INSERT INTO xl_metadata(param, value) VALUES ('headersetcookie', '')
+INSERT INTO xl_metadata(param, value) VALUES ('value', '')
+INSERT INTO xl_metadata(param, value) VALUES ('urlcount', '')
+INSERT INTO xl_metadata(param, value) VALUES ('headerxpad', '')
+INSERT INTO xl_metadata(param, value) VALUES ('metadata', '')
+INSERT INTO xl_metadata(param, value) VALUES ('headerxaspnetversion', '')
+INSERT INTO xl_metadata(param, value) VALUES ('headertransferencoding', '')
+INSERT INTO xl_metadata(param, value) VALUES ('headerexpires', '')
+INSERT INTO xl_metadata(param, value) VALUES ('fullurl', '')
+INSERT INTO xl_metadata(param, value) VALUES ('headerdate', '')
+INSERT INTO xl_metadata(param, value) VALUES ('webcacheurl', '')
+INSERT INTO xl_metadata(param, value) VALUES ('header', '')
+INSERT INTO xl_metadata(param, value) VALUES ('startdate', '')
+INSERT INTO xl_metadata(param, value) VALUES ('scenario', '')
+INSERT INTO xl_metadata(param, value) VALUES ('assertedby', '')
+INSERT INTO xl_metadata(param, value) VALUES ('doctype', '')
+INSERT INTO xl_metadata(param, value) VALUES ('calculatedsize', '')
+INSERT INTO xl_metadata(param, value) VALUES ('ptype', '')
+INSERT INTO xl_metadata(param, value) VALUES ('pcolumn', '')
+INSERT INTO xl_metadata(param, value) VALUES ('headercachecontrol', '')
+INSERT INTO xl_metadata(param, value) VALUES ('result', '')
+INSERT INTO xl_metadata(param, value) VALUES ('subject', '')
+INSERT INTO xl_metadata(param, value) VALUES ('line', '')
+INSERT INTO xl_metadata(param, value) VALUES ('authoringtool', '')
+INSERT INTO xl_metadata(param, value) VALUES ('downloaded', '')
+INSERT INTO xl_metadata(param, value) VALUES ('headeracceptranges', '')
+INSERT INTO xl_metadata(param, value) VALUES ('headercontenttype', '')
+INSERT INTO xl_metadata(param, value) VALUES ('mode', '')
+INSERT INTO xl_metadata(param, value) VALUES ('sitesurvey', '')
+INSERT INTO xl_metadata(param, value) VALUES ('errormargin', '')
+INSERT INTO xl_metadata(param, value) VALUES ('headervary', '')
+INSERT INTO xl_metadata(param, value) VALUES ('title', '')
+INSERT INTO xl_metadata(param, value) VALUES ('singlelocation', '')
+INSERT INTO xl_metadata(param, value) VALUES ('asserts', '')
+INSERT INTO xl_metadata(param, value) VALUES ('headerp3p', '')
+INSERT INTO xl_metadata(param, value) VALUES ('headerconnection', '')
+INSERT INTO xl_metadata(param, value) VALUES ('hasversion', '')
+INSERT INTO xl_metadata(param, value) VALUES ('startpointer', '')
+INSERT INTO xl_metadata(param, value) VALUES ('requirement', '')
+INSERT INTO xl_metadata(param, value) VALUES ('website', '')
+INSERT INTO xl_metadata(param, value) VALUES ('resource', '')
+INSERT INTO xl_metadata(param, value) VALUES ('headerserver', '')
+INSERT INTO xl_metadata(param, value) VALUES ('variance', '')
+INSERT INTO xl_metadata(param, value) VALUES ('testrun', '')
+INSERT INTO xl_metadata(param, value) VALUES ('pagesurvey', '')
+INSERT INTO xl_metadata(param, value) VALUES ('headerpragma', '')
+INSERT INTO xl_metadata(param, value) VALUES ('headercontentlocation', '')
+INSERT INTO xl_metadata(param, value) VALUES ('unreliablewarning', '')
+INSERT INTO xl_metadata(param, value) VALUES ('typeofscenario', '')
+INSERT INTO xl_metadata(param, value) VALUES ('type', '')
+INSERT INTO xl_metadata(param, value) VALUES ('IsOverflow', '0')
+
+-----------------------------------
+DROP FUNCTION refresh_matview;
+CREATE OR REPLACE FUNCTION refresh_matview() RETURNS integer AS $BODY$BEGIN 
+TRUNCATE Map;
+DROP INDEX idx_map_id;
+DROP INDEX idx_map_uri;
+INSERT INTO map(id, uri, ct) select id, uri, 'result' from only result;
+INSERT INTO map(id, uri, ct) select id, uri, 'testsubject' from only testsubject;
+INSERT INTO map(id, uri, ct) select id, uri, 'rangelocation' from only rangelocation;
+INSERT INTO map(id, uri, ct) select id, uri, 'assertion' from only assertion;
+INSERT INTO map(id, uri, ct) select id, uri, 'header' from only header;
+INSERT INTO map(id, uri, ct) select id, uri, 'sitesurvey' from only sitesurvey;
+INSERT INTO map(id, uri, ct) select id, uri, 'software' from only software;
+INSERT INTO map(id, uri, ct) select id, uri, 'testrun' from only testrun;
+INSERT INTO map(id, uri, ct) select id, uri, 'singlelocation' from only singlelocation;
+INSERT INTO map(id, uri, ct) select id, uri, 'scenario' from only scenario;
+INSERT INTO map(id, uri, ct) select id, uri, 'pagesurvey' from only pagesurvey;
+INSERT INTO map(id, uri, ct) select id, uri, 'testrequirement' from only testrequirement;
+INSERT INTO map(id, uri, ct) select id, uri, 'runs' from only runs;
+INSERT INTO map(id, uri, ct) select id, uri, 'startpointer' from only startpointer;
+INSERT INTO map(id, uri, ct) select id, uri, 'metadata' from only metadata;
+CREATE UNIQUE INDEX idx_map_id ON Map(id);
+CREATE INDEX idx_map_uri ON Map USING BTREE (decode(md5(uri::text), 'hex'::text));
+ RETURN 1; 
+  END;
+  $BODY$  
+ LANGUAGE 'plpgsql' VOLATILE  COST 100;
+
+-----------------------------------
+DROP FUNCTION deleteexistingrdf;
+CREATE OR REPLACE FUNCTION deleteexistingrdf() RETURNS integer AS $BODY$BEGIN 
+DELETE FROM Thing WHERE id IN (SELECT id FROM DelExisting);
+DELETE FROM  rangelocation_pagesurvey WHERE id IN  (SELECT id FROM DelExisting);
+DELETE FROM  rangelocation_page WHERE id IN  (SELECT id FROM DelExisting);
+DELETE FROM  header_headeretag WHERE id IN  (SELECT id FROM DelExisting);
+DELETE FROM  header_headerlastmodified WHERE id IN  (SELECT id FROM DelExisting);
+DELETE FROM  header_headercontenttype WHERE id IN  (SELECT id FROM DelExisting);
+DELETE FROM  header_headerserver WHERE id IN  (SELECT id FROM DelExisting);
+DELETE FROM  header_headerxpoweredby WHERE id IN  (SELECT id FROM DelExisting);
+DELETE FROM  header_headerdate WHERE id IN  (SELECT id FROM DelExisting);
+DELETE FROM  header_headercontentlength WHERE id IN  (SELECT id FROM DelExisting);
+DELETE FROM  header_headersetcookie WHERE id IN  (SELECT id FROM DelExisting);
+DELETE FROM  header_headercachecontrol WHERE id IN  (SELECT id FROM DelExisting);
+DELETE FROM  header_headercontentlocation WHERE id IN  (SELECT id FROM DelExisting);
+DELETE FROM  sitesurvey_barrierindicator WHERE id IN  (SELECT id FROM DelExisting);
+DELETE FROM  sitesurvey_pagesurvey WHERE id IN  (SELECT id FROM DelExisting);
+DELETE FROM  sitesurvey_scenario WHERE id IN  (SELECT id FROM DelExisting);
+DELETE FROM  sitesurvey_urlcount WHERE id IN  (SELECT id FROM DelExisting);
+DELETE FROM  sitesurvey_variance WHERE id IN  (SELECT id FROM DelExisting);
+DELETE FROM  sitesurvey_website WHERE id IN  (SELECT id FROM DelExisting);
+DELETE FROM  sitesurvey_errormargin WHERE id IN  (SELECT id FROM DelExisting);
+DELETE FROM  scenario_barrierindicator WHERE id IN  (SELECT id FROM DelExisting);
+DELETE FROM  scenario_rangelocation WHERE id IN  (SELECT id FROM DelExisting);
+DELETE FROM  pagesurvey_webcacheurl WHERE id IN  (SELECT id FROM DelExisting);
+DELETE FROM  pagesurvey_doctype WHERE id IN  (SELECT id FROM DelExisting);
+DELETE FROM  pagesurvey_metadata WHERE id IN  (SELECT id FROM DelExisting);
+DELETE FROM  pagesurvey_fullurl WHERE id IN  (SELECT id FROM DelExisting);
+DELETE FROM  pagesurvey_downloaded WHERE id IN  (SELECT id FROM DelExisting);
+DELETE FROM  pagesurvey_authoringtool WHERE id IN  (SELECT id FROM DelExisting);
+DELETE FROM  pagesurvey_testsubject WHERE id IN  (SELECT id FROM DelExisting);
+DELETE FROM  pagesurvey_asserts WHERE id IN  (SELECT id FROM DelExisting);
+ RETURN 1; 
+  END;
+  $BODY$  
+ LANGUAGE 'plpgsql' VOLATILE  COST 100;
+
+-----------------------------------
+DROP TABLE xl_overflow CASCADE
+CREATE TABLE xl_overflow(id bigint,pre varchar,obj varchar,uri varchar)
+CREATE INDEX xl_overflow_id ON xl_overflow(id)
+
+-----------------------------------
+DROP TABLE xl_todelete CASCADE
+CREATE TABLE xl_todelete(id bigint)
+CREATE UNIQUE INDEX xl_todelete_id ON xl_todelete(id)
+
+-----------------------------------
+DROP TABLE Map CASCADE
+CREATE TABLE Map(id bigint,uri varchar,ct varchar)
+CREATE UNIQUE INDEX idx_map_id ON Map(id)
+CREATE INDEX idx_map_uri ON Map USING BTREE (decode(md5(uri::text), 'hex'::text))
+
+-----------------------------------
+
+CREATE TABLE Thing(id bigint,uri varchar)
+CREATE TABLE result(barrierindicator float,validity varchar) INHERITS (Thing)
+CREATE TABLE testsubject(pdate varchar,title varchar,calculatedsize int) INHERITS (Thing)
+CREATE TABLE rangelocation_pagesurvey(id bigint, pagesurvey bigint)
+CREATE TABLE rangelocation_page(id bigint, page varchar)
+CREATE TABLE rangelocation(startpointer bigint,resource varchar) INHERITS (Thing)
+CREATE TABLE assertion(requirement bigint,subject bigint,singlelocation bigint,result bigint,assertedby bigint,mode varchar) INHERITS (Thing)
+CREATE TABLE header_headeretag(id bigint, headeretag varchar)
+CREATE TABLE header_headerlastmodified(id bigint, headerlastmodified varchar)
+CREATE TABLE header_headercontenttype(id bigint, headercontenttype varchar)
+CREATE TABLE header_headerserver(id bigint, headerserver varchar)
+CREATE TABLE header_headerxpoweredby(id bigint, headerxpoweredby varchar)
+CREATE TABLE header_headerdate(id bigint, headerdate varchar)
+CREATE TABLE header_headercontentlength(id bigint, headercontentlength varchar)
+CREATE TABLE header_headersetcookie(id bigint, headersetcookie varchar)
+CREATE TABLE header_headercachecontrol(id bigint, headercachecontrol varchar)
+CREATE TABLE header_headercontentlocation(id bigint, headercontentlocation varchar)
+CREATE TABLE header(headeracceptranges varchar,headeriisexport varchar,headermicrosoftofficewebserver varchar,headertransferencoding varchar,headerpragma varchar,headerxaspnetversion varchar,headerexpires varchar,headerxpad varchar,headerconnection varchar,headervary varchar,headerp3p varchar) INHERITS (Thing)
+CREATE TABLE sitesurvey_barrierindicator(id bigint, barrierindicator float)
+CREATE TABLE sitesurvey_pagesurvey(id bigint, pagesurvey bigint)
+CREATE TABLE sitesurvey_scenario(id bigint, scenario bigint)
+CREATE TABLE sitesurvey_urlcount(id bigint, urlcount varchar)
+CREATE TABLE sitesurvey_variance(id bigint, variance varchar)
+CREATE TABLE sitesurvey_website(id bigint, website varchar)
+CREATE TABLE sitesurvey_errormargin(id bigint, errormargin varchar)
+CREATE TABLE sitesurvey(unreliablewarning varchar,basedownloaddir varchar) INHERITS (Thing)
+CREATE TABLE software(title varchar,description varchar,hasversion varchar) INHERITS (Thing)
+CREATE TABLE testrun(startdate varchar,sitesurvey bigint) INHERITS (Thing)
+CREATE TABLE singlelocation(line int,pcolumn int) INHERITS (Thing)
+CREATE TABLE scenario_barrierindicator(id bigint, barrierindicator float)
+CREATE TABLE scenario_rangelocation(id bigint, rangelocation bigint)
+CREATE TABLE scenario(startpointer bigint,typeofscenario varchar) INHERITS (Thing)
+CREATE TABLE pagesurvey_webcacheurl(id bigint, webcacheurl varchar)
+CREATE TABLE pagesurvey_doctype(id bigint, doctype varchar)
+CREATE TABLE pagesurvey_metadata(id bigint, metadata bigint)
+CREATE TABLE pagesurvey_fullurl(id bigint, fullurl varchar)
+CREATE TABLE pagesurvey_downloaded(id bigint, downloaded varchar)
+CREATE TABLE pagesurvey_authoringtool(id bigint, authoringtool varchar)
+CREATE TABLE pagesurvey_testsubject(id bigint, testsubject bigint)
+CREATE TABLE pagesurvey_asserts(id bigint, asserts bigint)
+CREATE TABLE pagesurvey(header bigint) INHERITS (Thing)
+CREATE TABLE testrequirement(title varchar,description varchar) INHERITS (Thing)
+CREATE TABLE runs(testrun varchar) INHERITS (Thing)
+CREATE TABLE startpointer(line int,pcolumn int,resource varchar) INHERITS (Thing)
+CREATE TABLE metadata(value varchar,subject bigint,singlelocation bigint,ptype varchar) INHERITS (Thing)
+CREATE TABLE xl_metadata(param varchar,value varchar)
+CREATE TABLE xl_overflow(id bigint,pre varchar,obj varchar,uri varchar)
+CREATE TABLE xl_todelete(id bigint)
+CREATE TABLE Map(id bigint,uri varchar,ct varchar)
+TripleCount=1000000,  VisitDB=0, TotalTime=25.02s, AvgSpeed=39970.30 
+TripleCount=2000000,  VisitDB=0, TotalTime=45.55s, AvgSpeed=43908.07 
+TripleCount=3000000,  VisitDB=0, TotalTime=65.84s, AvgSpeed=45566.25 
+TripleCount=4000000,  VisitDB=0, TotalTime=85.82s, AvgSpeed=46609.65 
+TripleCount=5000000,  VisitDB=0, TotalTime=106.70s, AvgSpeed=46858.94 
+TripleCount=6000000,  VisitDB=0, TotalTime=135.73s, AvgSpeed=44204.58 
+TripleCount=7000000,  VisitDB=0, TotalTime=162.49s, AvgSpeed=43078.53 
+TripleCount=8000000,  VisitDB=0, TotalTime=192.40s, AvgSpeed=41580.67 
+TripleCount=9000000,  VisitDB=0, TotalTime=216.86s, AvgSpeed=41501.13 
+TripleCount=10000000,  VisitDB=0, TotalTime=242.06s, AvgSpeed=41311.58 
+TripleCount=11000000,  VisitDB=0, TotalTime=271.22s, AvgSpeed=40558.05 
+TripleCount=12000000,  VisitDB=0, TotalTime=300.93s, AvgSpeed=39875.94 
+TripleCount=13000000,  VisitDB=0, TotalTime=331.93s, AvgSpeed=39164.50 
+TripleCount=14000000,  VisitDB=0, TotalTime=357.98s, AvgSpeed=39108.73 
+TripleCount=15000000,  VisitDB=0, TotalTime=381.80s, AvgSpeed=39287.32 
+TripleCount=16000000,  VisitDB=0, TotalTime=405.64s, AvgSpeed=39443.88 
+TripleCount=17000000,  VisitDB=0, TotalTime=432.84s, AvgSpeed=39275.90 
+TripleCount=18000000,  VisitDB=0, TotalTime=468.10s, AvgSpeed=38453.47 
+TripleCount=19000000,  VisitDB=0, TotalTime=513.51s, AvgSpeed=37000.54 
+TripleCount=20000000,  VisitDB=0, TotalTime=542.75s, AvgSpeed=36849.07 
+TripleCount=21000000,  VisitDB=0, TotalTime=567.68s, AvgSpeed=36992.43 
+TripleCount=22000000,  VisitDB=0, TotalTime=591.90s, AvgSpeed=37168.42 
+TripleCount=23000000,  VisitDB=0, TotalTime=611.12s, AvgSpeed=37635.82 
+TripleCount=24000000,  VisitDB=0, TotalTime=648.03s, AvgSpeed=37035.44 
+TripleCount=25000000,  VisitDB=0, TotalTime=678.75s, AvgSpeed=36832.57 
+TripleCount=26000000,  VisitDB=0, TotalTime=711.36s, AvgSpeed=36549.49 
+TripleCount=27000000,  VisitDB=0, TotalTime=743.09s, AvgSpeed=36334.94 
+TripleCount=28000000,  VisitDB=0, TotalTime=768.60s, AvgSpeed=36430.00 
+TripleCount=29000000,  VisitDB=0, TotalTime=791.87s, AvgSpeed=36622.24 
+TripleCount=30000000,  VisitDB=0, TotalTime=818.69s, AvgSpeed=36643.87 
+TripleCount=31000000,  VisitDB=0, TotalTime=854.03s, AvgSpeed=36298.57 
+TripleCount=32000000,  VisitDB=0, TotalTime=893.99s, AvgSpeed=35794.40 
+TripleCount=33000000,  VisitDB=0, TotalTime=931.61s, AvgSpeed=35422.43 
+TripleCount=34000000,  VisitDB=0, TotalTime=961.09s, AvgSpeed=35376.54 
+TripleCount=35000000,  VisitDB=0, TotalTime=985.57s, AvgSpeed=35512.30 
+TripleCount=36000000,  VisitDB=0, TotalTime=1008.87s, AvgSpeed=35683.42 
+TripleCount=37000000,  VisitDB=0, TotalTime=1039.63s, AvgSpeed=35589.61 
+TripleCount=38000000,  VisitDB=0, TotalTime=1069.18s, AvgSpeed=35541.22 
+TripleCount=39000000,  VisitDB=0, TotalTime=1101.14s, AvgSpeed=35417.76 
+TripleCount=40000000,  VisitDB=0, TotalTime=1134.31s, AvgSpeed=35263.78 
+TripleCount=41000000,  VisitDB=0, TotalTime=1163.90s, AvgSpeed=35226.41 
+TripleCount=42000000,  VisitDB=0, TotalTime=1188.74s, AvgSpeed=35331.41 
+TripleCount=43000000,  VisitDB=0, TotalTime=1213.38s, AvgSpeed=35438.24 
+TripleCount=44000000,  VisitDB=0, TotalTime=1242.76s, AvgSpeed=35405.13 
+TripleCount=45000000,  VisitDB=0, TotalTime=1280.30s, AvgSpeed=35147.97 
+TripleCount=46000000,  VisitDB=0, TotalTime=1322.20s, AvgSpeed=34790.39 
+TripleCount=47000000,  VisitDB=0, TotalTime=1353.95s, AvgSpeed=34713.30 
+TripleCount=48000000,  VisitDB=0, TotalTime=1378.53s, AvgSpeed=34819.72 
+TripleCount=49000000,  VisitDB=0, TotalTime=1401.59s, AvgSpeed=34960.18 
+TripleCount=50000000,  VisitDB=0, TotalTime=1430.30s, AvgSpeed=34957.67 
+TripleCount=51000000,  VisitDB=0, TotalTime=1460.32s, AvgSpeed=34923.76 
+TripleCount=52000000,  VisitDB=0, TotalTime=1492.82s, AvgSpeed=34833.40 
+TripleCount=53000000,  VisitDB=0, TotalTime=1526.97s, AvgSpeed=34709.24 
+TripleCount=54000000,  VisitDB=0, TotalTime=1556.52s, AvgSpeed=34692.69 
+TripleCount=55000000,  VisitDB=0, TotalTime=1582.01s, AvgSpeed=34765.97 
+TripleCount=56000000,  VisitDB=0, TotalTime=1607.13s, AvgSpeed=34844.67 
+TripleCount=57000000,  VisitDB=0, TotalTime=1642.31s, AvgSpeed=34707.14 
+TripleCount=58000000,  VisitDB=0, TotalTime=1684.70s, AvgSpeed=34427.53 
+TripleCount=59000000,  VisitDB=0, TotalTime=1720.80s, AvgSpeed=34286.38 
+TripleCount=60000000,  VisitDB=0, TotalTime=1746.16s, AvgSpeed=34361.04 
+TripleCount=61000000,  VisitDB=0, TotalTime=1770.34s, AvgSpeed=34456.68 
+TripleCount=62000000,  VisitDB=0, TotalTime=1795.86s, AvgSpeed=34523.82 
+TripleCount=63000000,  VisitDB=0, TotalTime=1834.19s, AvgSpeed=34347.59 
+TripleCount=64000000,  VisitDB=0, TotalTime=1869.84s, AvgSpeed=34227.46 
+TripleCount=65000000,  VisitDB=0, TotalTime=1900.64s, AvgSpeed=34198.96 
+TripleCount=66000000,  VisitDB=0, TotalTime=1925.56s, AvgSpeed=34275.82 
+TripleCount=67000000,  VisitDB=0, TotalTime=1950.82s, AvgSpeed=34344.62 
+TripleCount=68000000,  VisitDB=0, TotalTime=1984.19s, AvgSpeed=34270.87 
+TripleCount=69000000,  VisitDB=0, TotalTime=2027.92s, AvgSpeed=34025.08 
+TripleCount=70000000,  VisitDB=0, TotalTime=2064.72s, AvgSpeed=33902.98 
+TripleCount=71000000,  VisitDB=0, TotalTime=2090.65s, AvgSpeed=33960.71 
+TripleCount=72000000,  VisitDB=0, TotalTime=2115.19s, AvgSpeed=34039.44 
+TripleCount=73000000,  VisitDB=0, TotalTime=2139.53s, AvgSpeed=34119.58 
+TripleCount=74000000,  VisitDB=0, TotalTime=2174.00s, AvgSpeed=34038.57 
+TripleCount=75000000,  VisitDB=0, TotalTime=2205.02s, AvgSpeed=34013.35 
+TripleCount=76000000,  VisitDB=0, TotalTime=2238.68s, AvgSpeed=33948.61 
+TripleCount=77000000,  VisitDB=0, TotalTime=2271.30s, AvgSpeed=33901.23 
+TripleCount=78000000,  VisitDB=0, TotalTime=2297.16s, AvgSpeed=33955.00 
+TripleCount=79000000,  VisitDB=0, TotalTime=2322.94s, AvgSpeed=34008.63 
+TripleCount=80000000,  VisitDB=0, TotalTime=2354.93s, AvgSpeed=33971.35 
+TripleCount=81000000,  VisitDB=0, TotalTime=2389.12s, AvgSpeed=33903.69 
+TripleCount=82000000,  VisitDB=0, TotalTime=2420.17s, AvgSpeed=33881.87 
+TripleCount=83000000,  VisitDB=0, TotalTime=2446.98s, AvgSpeed=33919.39 
+TripleCount=84000000,  VisitDB=0, TotalTime=2476.24s, AvgSpeed=33922.36 
+TripleCount=85000000,  VisitDB=0, TotalTime=2512.05s, AvgSpeed=33836.89 
+TripleCount=86000000,  VisitDB=0, TotalTime=2556.27s, AvgSpeed=33642.74 
+TripleCount=87000000,  VisitDB=0, TotalTime=2589.04s, AvgSpeed=33603.24 
+TripleCount=88000000,  VisitDB=0, TotalTime=2614.57s, AvgSpeed=33657.54 
+TripleCount=89000000,  VisitDB=0, TotalTime=2638.79s, AvgSpeed=33727.59 
+TripleCount=90000000,  VisitDB=0, TotalTime=2663.01s, AvgSpeed=33796.31 
+TripleCount=91000000,  VisitDB=0, TotalTime=2697.18s, AvgSpeed=33738.98 
+TripleCount=92000000,  VisitDB=0, TotalTime=2727.90s, AvgSpeed=33725.52 
+TripleCount=93000000,  VisitDB=0, TotalTime=2761.17s, AvgSpeed=33681.35 
+TripleCount=94000000,  VisitDB=0, TotalTime=2793.15s, AvgSpeed=33653.72 
+TripleCount=95000000,  VisitDB=0, TotalTime=2819.31s, AvgSpeed=33696.21 
+TripleCount=96000000,  VisitDB=0, TotalTime=2845.88s, AvgSpeed=33733.00 
+TripleCount=97000000,  VisitDB=0, TotalTime=2871.14s, AvgSpeed=33784.53 
+TripleCount=98000000,  VisitDB=0, TotalTime=2902.73s, AvgSpeed=33761.30 
+TripleCount=99000000,  VisitDB=0, TotalTime=2944.00s, AvgSpeed=33627.76 
+TripleCount=100000000,  VisitDB=0, TotalTime=2982.63s, AvgSpeed=33527.49 
+Load 100M: 589714.17 s 
+Mem2CSV=0.00; Del=0.00; CSV2DB=0.00; 
+BuildMap: 0.62 s 

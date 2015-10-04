@@ -1,0 +1,6 @@
+(type Student ?X)
+(type Faculty ?Y)
+(type Course ?Z)
+(advisor ?X ?Y)
+(takesCourse ?X ?Z)
+(teacherOf ?Y ?Z)

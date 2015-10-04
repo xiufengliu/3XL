@@ -1,0 +1,2 @@
+(type Publication ?X)
+(publicationAuthor ?X http://www.Department0.University0.edu/AssistantProfessor0)

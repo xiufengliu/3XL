@@ -1,0 +1,31 @@
+#1.2 23.967945
+#2.2 25.9544439
+#3.2 25.03122285
+#4.2 25.11859045
+#5.2 26.25715685
+#6.2 28.1258512
+#7.2 13.7548487
+#8.2 69178.819934
+
+/*--------Experiment 2: Testing response time of multiProperty ---------------------------*/
+1.2 69459.821640  4.841733664 
+2.2 14.1848127    1.151823606
+3.2 19.84963875  1.297752607
+4.2 13.86065815  1.141783853
+5.2 38.6376203  1.58701037
+6.2 25.1585397  1.400685429
+7.2 30.3499712  1.482158283
+8.2 32.1275819  1.506878039
+
+
+#set grid noxtics nomxtics ytics nomytics noztics nomztics nox2tics nomx2tics noy2tics nomy2tics nocbtics nomcbtics 
+#set style fill solid 1.00 border -1
+#set boxwidth 0.2 
+#set xrange[0:10]
+#set yrange[0:10]
+#set xlabel "Query #"
+#set ylabel "Query time (ms, logarithmic scale)"
+#plot "query_mp.dat" u 1:3 t "3XL-MP" w boxes, "query_ar.dat" u 1:3 t "3XL-Array" w boxes,"query_3s.dat" u 1:3 t "3store" w boxes
+
+
+

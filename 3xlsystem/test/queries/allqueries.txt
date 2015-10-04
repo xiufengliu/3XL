@@ -1,0 +1,86 @@
+Query1
+(type GraduateStudent ?X)
+(takesCourse ?X http://www.Department0.University0.edu/GraduateCourse0)
+- This query bears large input and high selectivity. It queries about just one class and one property and does not assume any hierarchy information or inference.
+
+Query2
+(type GraduateStudent ?X)
+(type University ?Y)
+(type Department ?Z)
+(memberOf ?X ?Z)
+(subOrganizationOf ?Z ?Y)
+(undergraduateDegreeFrom ?X ?Y)
+- This query increases in complexity: 3 classes and 3 properties are involved. Additionally, there is a triangular pattern of relationships between the objects involved.
+
+Query3
+(type Publication ?X)
+(publicationAuthor ?X http://www.Department0.University0.edu/AssistantProfessor0)
+- This query is similar to Query 1 but class Publication has a wide hierarchy.
+
+Query4
+(type Professor ?X)
+(worksFor ?X http://www.Department0.University0.edu)
+(name ?X ?Y1)
+(emailAddress ?X ?Y2)
+(telephone ?X ?Y3)
+- This query has small input and high selectivity. It assumes subClassOf relationship between Professor and its subclasses. Class Professor has a wide hierarchy. Another feature is that it queries about multiple properties of a single class.
+
+Query5
+(type Person ?X)
+(memberOf ?X http://www.Department0.University0.edu)
+- This query assumes subClassOf relationship between Person and its subclasses and subPropertyOf relationship between memberOf and its subproperties. Moreover, class Person features a deep and wide hierarchy.
+
+Query6
+(type Student ?X)
+- This query queries about only one class. But it assumes both the explicit subClassOf relationship between UndergraduateStudent and Student and the implicit one between GraduateStudent and Student. In addition, it has large input and low selectivity.
+
+Query7
+(type Student ?X)
+(type Course ?Y)
+(teacherOf http://www.Department0.University0.edu/AssociateProfessor0 ?Y)
+(takesCourse ?X ?Y)
+- This query is similar to Query 6 in terms of class Student but it increases in the number of classes and properties and its selectivity is high.
+
+Query8
+(type Student ?X)
+(type Department ?Y)
+(memberOf ?X ?Y)
+(subOrganizationOf ?Y http://www.University0.edu)
+(emailAddress ?X ?Z)
+- This query is further more complex than Query 7 by including one more property.
+
+Query9
+(type Student ?X)
+(type Faculty ?Y)
+(type Course ?Z)
+(advisor ?X ?Y)
+(takesCourse ?X ?Z)
+(teacherOf ?Y ?Z)
+- Besides the aforementioned features of class Student and the wide hierarchy of class Faculty, like Query 2, this query is characterized by the most classes and properties in the query set and there is a triangular pattern of relationships.
+
+Query10
+(type Student ?X)
+(takesCourse ?X http://www.Department0.University0.edu/GraduateCourse0)
+- This query differs from Query 6, 7, 8 and 9 in that it only requires the (implicit) subClassOf relationship between GraduateStudent and Student, i.e., subClassOf relationship between UndergraduateStudent and Student does not add to the results.
+
+Query11 Note: Change 'http://www.University0.edu' to 'http://www.Department0.University0.edu'
+(type ResearchGroup ?X) 
+(subOrganizationOf ?X http://www.Department0.University0.edu)
+- Query 11, 12 and 13 are intended to verify the presence of certain reasoning capabilities in the system. In this query, property subOrganizationOf is defined as transitive. Since in the benchmark data, instances of ResearchGroup are stated as a sub-organization of a Department individual and the later suborganization of a University individual, inference about the subOrgnizationOf relationship between instances of ResearchGroup and University is required to answer this query. Additionally, its input is small.
+
+Query12 Note: change 'Chair' to 'FullProfessor'
+(type FullProfessor ?X)
+(type Department ?Y)
+(worksFor ?X ?Y)
+(subOrganizationOf ?Y http://www.University0.edu)
+- The benchmark data do not produce any instances of class Chair. Instead, each Department individual is linked to the chair professor of that department by property headOf. Hence this query requires realization, i.e., inference that that professor is an instance of class Chair because he or she is the head of a department. Input of this query is small as well.
+
+Query13 Note: This query is not supported
+(type Person ?X)
+(hasAlumnus http://www.University0.edu ?X)
+- Property hasAlumnus is defined in the benchmark ontology as the inverse of property degreeFrom, which has three subproperties: undergraduateDegreeFrom, mastersDegreeFrom, and doctoralDegreeFrom. The benchmark data state a person as an alumnus of a university using one of these three subproperties instead of hasAlumnus. Therefore, this query assumes subPropertyOf relationships between degreeFrom and its subproperties, and also requires inference about inverseOf.
+
+Query14
+(type UndergraduateStudent ?X)
+- This query is the simplest in the test set. This query represents those with large input and low selectivity and does not assume any hierarchy information or inference.
+

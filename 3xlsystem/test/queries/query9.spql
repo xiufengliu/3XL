@@ -1,0 +1,11 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX ub: <http://www.w3c.org#>
+SELECT ?X ?Y ?Z
+WHERE {
+ ?Z rdf:type ub:Course .
+ ?Y ub:teacherOf ?Z .
+ ?X ub:advisor ?Y .
+ ?Y rdf:type ub:Faculty .
+ ?X ub:takesCourse ?Z .
+ ?X rdf:type ub:Student
+}

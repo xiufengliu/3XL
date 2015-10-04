@@ -1,0 +1,27 @@
+1 62 3.1
+2 188 9.4
+3 301 15.05
+4 384 19.2
+5 504 25.2
+6 208 28.25
+7 372 32.95
+8 779 38.9
+9 414 41.7
+10 840 45.3
+11 1017 50.85
+12 1081 54.05
+13 1072 53.6
+14 717 60.0
+15 1270 63.5
+16 1312 65.6
+17 1077 67.0
+18 1304 65.2
+19 1463 73.15
+20 790 72.74
+
+# When Buffer size = 2000, the percent of the exisiting triples in database / buffersize
+# set xlabel "Triple number (*100,000)"
+# set title "Existing triples in buffer"
+
+
+

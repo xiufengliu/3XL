@@ -1,0 +1,4 @@
+(type Student ?X)
+(type Course ?Y)
+(teacherOf http://www.Department0.University0.edu/AssociateProfessor0 ?Y)
+(takesCourse ?X ?Y)

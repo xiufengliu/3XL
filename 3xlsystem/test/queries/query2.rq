@@ -1,0 +1,6 @@
+(type GraduateStudent ?X)
+(type University ?Y)
+(type Department ?Z)
+(memberOf ?X ?Z)
+(subOrganizationOf ?Z ?Y)
+(undergraduateDegreeFrom ?X ?Y)

@@ -1,0 +1,133 @@
+<!--  Abover is well-formated 
+    http://www.eiao.net/rdf/2.0#header
+    http://www.eiao.net/rdf/2.0#MetaData
+    http://www.eiao.net/rdf/2.0#pageSurvey
+    http://www.eiao.net/rdf/2.0#rangeLocation
+    http://www.eiao.net/rdf/2.0#runs
+    http://www.eiao.net/rdf/2.0#scenario
+    http://www.eiao.net/rdf/2.0#SingleLocation
+    http://www.eiao.net/rdf/2.0#siteSurvey
+    http://www.eiao.net/rdf/2.0#startPointer
+    http://www.w3.org/1999/02/22-rdf-syntax-ns#type
+    http://www.w3.org/WAI/ER/EARL/nmg-strawman#Assertion
+    http://www.w3.org/WAI/ER/EARL/nmg-strawman#result
+    http://www.w3.org/WAI/ER/EARL/nmg-strawman#Software
+    http://www.w3.org/WAI/ER/EARL/nmg-strawman#TestRequirement
+    http://www.w3.org/WAI/ER/EARL/nmg-strawman#TestSubject
+
+###########   
+
+1. header
+--headertransfer-encoding (single, liter)
+--headercontent-type (multi, liter)
+--headerdate (multi, liter)
+--headerconnection (single, liter)
+--headerserver (multi, liter)
+--headerx-powered-by (multi, liter)
+--headercontent-length (multi, liter)
+--headeretag (multi, liter)
+--headeraccept-ranges (single, liter)
+--headerlast-modified (multi, liter)
+--headerset-cookie (multi, liter)
+--headercache-control (multi, liter)
+--headerx-aspnet-version (single, liter)
+--headerx-pad (single, liter)
+--headercontent-location (multi, obj- ? <http://www.lagerbon-storgaard.dk/Default.html>)
+--headerp3p (single, liter)
+--headervary (single, liter)
+--headeriisexport (single, liter)
+--headermicrosoftofficewebserver (single, liter)
+--headerexpires (single, liter)
+--headerpragma (single, liter)
+
+2)  MetaData
+--singlelocation (single, obj-singlelocation)
+--subject (single, obj-subject)
+--value (single, liter)
+--type (single, obj-? <http://www.eiao.net/rdf/2.0/#technology>)
+
+
+3) pageSurvey
+webcacheurl (multi, obj-? <http://eiao2.eiao.net/webcache/storedfiles/EIAO_test_1024/99/www.horsemanship.dk/main.css>)
+fullurl (multi, obj-TestSubject)
+downloaded (multi, liter)
+doctype (multi, liter)
+header (single, obj-header)
+authoringtool  (multi, liter)
+metadata (multi, obj-metadata)
+testsubject (multi, obj-testsubject)
+asserts (multi, obj-Assertion)
+
+
+4) rangeLocation
+pageSurvey (multi, obj-pageSurvey)
+resource (single, obj-? <http://www.eiao.net/resource_types.html#rangeLocation>)
+startPointer (single, obj-startPointer)
+page (multi, obj-TestSubject)
+
+
+5) runs
+testRun (single, obj-?  <http://www.eiao.net/rdf/2.0/TestRun_99>)
+
+
+6) scenario
+barrierIndicator (multi, liter)
+typeofscenario (single, liter)
+rangeLocation (multi, obj-rangeLocation)
+
+7) SingleLocation
+line (single, liter)
+column (single, liter)
+
+
+8) siteSurvey
+pageSurvey (multi, obj-pageSurvey)
+barrierIndicator (multi, liter)
+scenario (multi, obj-scenario)
+variance (multi, liter)
+website (multi, obj-testsubject)
+unreliablewarning (single, liter)
+urlcount(multi, liter)
+basedownloaddir(single, liter)
+errormargin(multi, liter)
+
+
+9) startPointer
+line (single, liter)
+column (single, liter)
+resource (single, obj-? <http://www.eiao.net/resource_types.html#startPointer>)
+
+
+
+10) Assertion
+mode (single, obj-?<http://www.w3.org/WAI/ER/EARL/nmg-strawman#automatic>)
+singlelocation (single, obj-singlelocation)
+assertedby (single, obj- Software)
+subject (single, obj- testsubject)
+result (single, obj-result)
+requirement (single, obj -TestRequirement)
+
+
+11) result
+barrierIndicator (single, liter)
+validity (single, obj -? <http://www.w3.org/WAI/ER/EARL/nmg-strawman#pass>)
+
+
+12) Software
+ <http://purl.org/dc/elements/1.1/title> "EIAO Relaxed based WAM";
+  <http://purl.org/dc/elements/1.1/description> "WAM based on the Relaxed validator for EIAO,\nthat demonstrates the AWAM, BWA
+M, EARL generation and web services\ninterface for the EIAO Observatory.";
+  <http://purl.org/dc/terms/hasVersion> "0.3".
+
+
+13) TestRequirement
+  <http://purl.org/dc/elements/1.1/title> "UWEM.B.10.11.2.2.HTML.DEF.2.1";
+  <http://purl.org/dc/elements/1.1/description> "Checkpoint 11.2: Avoid deprecated features of W3C technologies.[Priority 2]".
+
+
+14) TestSubject
+http://purl.org/dc/elements/1.1/title (single, liter)
+http://purl.org/dc/elements/1.1/date (single, liter)
+-->
+  
+

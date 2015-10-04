@@ -1,0 +1,16 @@
+set xlabel "Triple Number"
+set ylabel "Triple Number/second"
+set title "Average loading speed using mulit-property table with buffer size=5000"
+plot "bulk_mp_b5000.dat" using 1:3 title "Bulkload" with linespoints, "copy_mp_b5000.dat" using 1:3 title "Copy" with linespoints, "3store_load.dat" using 1:3 title "3Store" with linespoints
+
+
+
+
+
+set xlabel "Triple Number"
+set ylabel "Loading time (s)"
+set title "Loading time using mulit-property table with buffer size=5000"
+plot "bulk_mp_b5000.dat" using 1:2 title "Bulkload" with linespoints, "copy_mp_b5000.dat" using 1:2 title "Copy" with linespoints, "3store_load.dat" using 1:2 title "3Store" with linespoints
+
+
+plot "copy_mp_b5000.dat" using 1:3 title "Copy5000" with lines, "copy_mp_b2000.dat" using 1:3 title "Copy2000" with lines, "copy_mp_b3000.dat" using 1:3 title "Copy3000" with lines,"copy_ar_b2000.dat" using 1:3 title "Copy2000-arr" with lines,"3store_load.dat" using 1:3 title "3Store" with lines

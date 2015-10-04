@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+  <comment>Application Configuration</comment>
+  <entry key="use.mp">false</entry>
+  
+  <entry key="owl.path">file:///home/xiliu/Dropbox/3xlsystem/src/xlsystem/ontology/eiao.owl</entry> 
+  <entry key="csv.path">/data2/xltest/csv/</entry>   
+  
+  <entry key="db.driver">org.postgresql.Driver</entry>
+  <entry key="db.url">jdbc:postgresql://localhost:5432/xiliu</entry>
+  <entry key="db.dbname">xiliu</entry>
+  <entry key="db.username">xiliu</entry>
+  <entry key="db.password">abcd1234</entry>
+
+  <entry key="vh.bufsize">150000</entry>
+  <entry key="mem.size">60</entry>
+  <entry key="vh.commit">0.4</entry>
+
+  <entry key="bdb.use">true</entry>
+  <entry key="bdb.path">/data2/xltest/bdb/</entry>
+  <entry key="bdb.bufsize">300</entry>
+
+ <entry key="rdf.delim">,</entry>
+</properties>

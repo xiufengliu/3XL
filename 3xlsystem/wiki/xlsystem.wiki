@@ -1,0 +1,65 @@
+#summary One-sentence summary of this page.
+ * [#Introduction Introduction]
+ * [#Database_Schema Database Schema]
+ * [#Generate_valueholder Generate valueholder]
+ * [#Architecture Architecture]
+  * [#Buffer_Scheme Buffer Scheme]
+ * [#Addition Addition]
+ * [#Query Query]
+ * [#Performance_Study Performance Study]
+= Introduction =
+
+Add your content here.
+
+= Database Schema = 
+ http://3xlsystem.googlecode.com/svn/wiki/DbSchema.png
+
+The database script: [http://dpaste.com/hold/147397/ 3XL-MP] and  [http://dpaste.com/hold/147398/ 3XL-Array]
+----
+= Architecture =
+ http://3xlsystem.googlecode.com/svn/wiki/Architecture.png
+----
+= Generate valueholder = 
+ http://3xlsystem.googlecode.com/svn/wiki/generateVh.png
+----
+== Buffer Schemes == 
+ # All the *valueholders* are buffered in one cycled queue, and an configurable commit percentage is set to decide how many valueholders will be flushed in one commit.
+  http://3xlsystem.googlecode.com/svn/wiki/xlsystem1.png
+  * Advantage
+  * Disadvantage
+ # A buffer is created to cache the data of each class table. In each buffer, a configurable commit percetage is set to decide how many valueholders will be flushed in one commit.
+  http://3xlsystem.googlecode.com/svn/wiki/xlsystem.png
+  * Advantage
+  * Disadvantage
+ # Performance Study
+ The DB visiting times for creating valueholder during the LUMB data loading
+
+||              || 25M  || 50M  || 75M || 100M       ||
+|| One Buffer || 12,059 || 26,132|| 39,209|| 51,283||
+|| Multi Buffer   || 0      || 0     || 0     || 0     ||
+
+ The loading performance comparison between Multiple valueholder buffers and single valueholder buffer. 
+http://3xlsystem.googlecode.com/svn/wiki/performancestudy1.png
+
+----
+= Addition =
+----
+= Query =
+ http://3xlsystem.googlecode.com/svn/wiki/QueryArchitecture.png
+
+
+
+= Performance Study =
+
+ # Point Query  
+ # Composite Query
+   * We compare the query performance of 3xlsystem and Jena2 (postgresql-based) by [http://dpaste.com/hold/147421/ LUBM queries](The coresponding [http://dpaste.com/hold/147454/ SPARQL] and  [http://dpaste.com/hold/147304/ translated SQL]).
+      http://3xlsystem.googlecode.com/svn/wiki/compositeQuery.png
+
+||       || Q1  || Q2  || Q3 || Q4   || Q5 || Q6 || Q7 || Q8 || Q9 || Q10 || Q11|| Q12|| Q13|| Q14||
+|| 3XL-MP||0.014||[http://dpaste.com/hold/147368/ 0.512]||0.015||[http://dpaste.com/hold/147369/ 0.161]||[http://dpaste.com/hold/147372/ 1.177]||[http://dpaste.com/hold/147337/ 6.793]||0.089||1.495||[http://dpaste.com/hold/147389/ 25.65]||0.014||0.045||0.052||  		||5.423||
+|| 3XL-Array||0.529||0.612||[http://dpaste.com/hold/147351/ 0.855] || 0.178||[http://dpaste.com/hold/147334/ 1.432]||[http://dpaste.com/hold/147337/ 6.43]|| [http://dpaste.com/hold/147331/ 41.311]||[http://dpaste.com/hold/147341/ 1.62]||[http://dpaste.com/hold/147348/ 71.012]||[http://dpaste.com/hold/147349/ 1.59]||0.271||0.066||  		||[http://dpaste.com/hold/147350/ 4.721]||    
+|| Jena2(DB-based) ||0.493||  834.351 || 0.156 ||743.193||0.428||84.101||1058.062||8.652||1023||0.168||7.101||8.135|| ||152.646|| 
+|| Jena2(file-based) ||118.90||2035.35||89.35||15.402||10.856|| 110.049||  3024.42||8054.74||5214.36|| 5.539||11.539|| 515.632||  		||  150.411|| 
+
+

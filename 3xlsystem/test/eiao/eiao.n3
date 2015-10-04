@@ -1,0 +1,5 @@
+<http://www.eiao.net/rdf/2.0/TestRun_99> <http://www.eiao.net/rdf/2.0#startDate> "2007-02-23" .
+<http://www.eiao.net/rdf/2.0/TestRun_99> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.eiao.net/rdf/2.0#testRun> .
+<http://www.eiao.net/rdf/2.0#runs> <http://www.eiao.net/rdf/2.0#testRun> <http://www.eiao.net/rdf/2.0/TestRun_99> .
+<http://www.eiao.net/rdf/2.0#runs> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.eiao.net/rdf/2.0#runs> .
+(http://www.eiao.net/rdf/2.0#runs,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,*)

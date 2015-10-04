@@ -1,0 +1,15 @@
+<http://www.eiao.net/rdf/2.0/#www.eiao.net.1.0.RelaxedWAM.UWEM.B.10.1.1.2.HTML.DEF.1.1-A22129247> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/WAI/ER/EARL/nmg-strawman#Assertion> .
+<http://www.eiao.net/rdf/2.0/#www.eiao.net.1.0.RelaxedWAM.UWEM.B.10.1.1.2.HTML.DEF.1.1-A22129247> <http://www.w3.org/WAI/ER/EARL/nmg-strawman#result> <http://www.eiao.net/rdf/2.0/#www.eiao.net.1.0.RelaxedWAM.UWEM.B.10.1.1.2.HTML.DEF.1.1-V22129247> .
+<http://www.eiao.net/rdf/2.0/#www.eiao.net.1.0.RelaxedWAM.UWEM.B.10.1.1.2.HTML.DEF.1.1-A22129247> <http://www.w3.org/WAI/ER/EARL/nmg-strawman#mode> <http://www.w3.org/WAI/ER/EARL/nmg-strawman#automatic> .
+<http://www.eiao.net/rdf/2.0/#www.eiao.net.1.0.RelaxedWAM.UWEM.B.10.1.1.2.HTML.DEF.1.1-A22129247> <http://www.w3.org/WAI/ER/EARL/nmg-strawman#subject> <http://www.vestergade1.dk/sider/main.htm> .
+<http://www.eiao.net/rdf/2.0/#www.eiao.net.1.0.RelaxedWAM.UWEM.B.10.1.1.2.HTML.DEF.1.1-A22129247> <http://www.w3.org/WAI/ER/EARL/nmg-strawman#assertedBy> <http://www.eiao.net/1.0/RelaxedWAM/> .
+<http://www.eiao.net/rdf/2.0/#www.eiao.net.1.0.RelaxedWAM.UWEM.B.10.1.1.2.HTML.DEF.1.1-A22129247> <http://www.eiao.net/rdf/2.0#singleLocation> <http://www.eiao.net/rdf/2.0/#www.eiao.net.1.0.RelaxedWAM.UWEM.B.10.1.1.2.HTML.DEF.1.1-L22129247> .
+<http://www.eiao.net/rdf/2.0/#www.eiao.net.1.0.RelaxedWAM.UWEM.B.10.1.1.2.HTML.DEF.1.1-A22129247> <http://www.w3.org/WAI/ER/EARL/nmg-strawman#requirement> <http://www.eiao.net/rdf/2.0/#UWEM.B.10.1.1.2.HTML.DEF.1.1> .
+<http://www.eiao.net/rdf/2.0/#www.eiao.net.1.0.RelaxedWAM.UWEM.B.10.1.1.2.HTML.DEF.1.1-V22129247> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/WAI/ER/EARL/nmg-strawman#result> .
+<http://www.vestergade1.dk/sider/main.htm> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/WAI/ER/EARL/nmg-strawman#testsubject> .
+<http://www.eiao.net/1.0/RelaxedWAM/> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/WAI/ER/EARL/nmg-strawman#software> .
+<http://www.eiao.net/rdf/2.0/#www.eiao.net.1.0.RelaxedWAM.UWEM.B.10.1.1.2.HTML.DEF.1.1-L22129247> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/WAI/ER/EARL/nmg-strawman#singlelocation> .
+<http://www.eiao.net/rdf/2.0/#UWEM.B.10.1.1.2.HTML.DEF.1.1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/WAI/ER/EARL/nmg-strawman#testrequirement> .
+
+
+

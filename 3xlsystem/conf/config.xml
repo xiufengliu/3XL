@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>3XL Configuration</comment>
+<entry key="csv.path">/data1/xltest/csv</entry>
+<entry key="db.password">Abcd1234</entry>
+<entry key="ont.path">/home/xiliu/workspace/3xlsystem/conf/lubm.owl</entry>
+<entry key="vh.commit">0.9</entry>
+<entry key="db.username">xiliu</entry>
+<entry key="ds.path">/data1/xltest/n3</entry>
+<entry key="db.driver">org.postgresql.Driver</entry>
+<entry key="bdb.bufsize">320</entry>
+<entry key="use.mp">false</entry>
+<entry key="db.dbname">xiliu</entry>
+<entry key="mem.size">60</entry>
+<entry key="db.url">jdbc:postgresql://localhost:5432/xiliu</entry>
+<entry key="vh.bufsize">400000</entry>
+<entry key="db.port">5432</entry>
+<entry key="bdb.path">/data1/xltest/bdb/</entry>
+<entry key="rdf.delim">,</entry>
+<entry key="bdb.use">true</entry>
+<entry key="db.host">localhost</entry>
+</properties>

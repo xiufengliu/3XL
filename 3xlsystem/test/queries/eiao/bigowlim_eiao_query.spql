@@ -1,0 +1,71 @@
+# queries expressed in SPARQL
+# [query ID]
+# query
+
+[query1]
+SELECT ?o
+WHERE {
+ <http://www.eiao.net/rdf/2.0/#www.eiao.net.1.0.RelaxedWAM.UWEM.B.10.11.2.2.HTML.DEF.2.1-A22368586> <http://www.w3.org/WAI/ER/EARL/nmg-strawman#subject> ?o 
+}
+
+[query2]
+select ?o 
+where {
+<http://www.eiao.net/rdf/2.0#Scenario_37> <http://www.eiao.net/rdf/2.0#typeofscenario> ?o
+}
+
+
+[query3]
+select ?o 
+where {
+<http://www.eiao.net/rdf/2.0#Scenario_10_range-26> <http://www.eiao.net/rdf/2.0#page> ?o
+}
+
+
+[query4]
+select ?o 
+where {
+<http://www.eiao.net/rdf/2.0#PageSurvey_http://www.eiao.net/rdf/2.0/PageSurvey_header78> <http://www.eiao.net/rdf/2.0#headerserver> ?o
+}
+
+
+[query5]
+select ?s ?o
+where {
+?s <http://www.w3.org/WAI/ER/EARL/nmg-strawman#subject> ?o
+}
+
+[query6]
+select ?s
+where {
+?s <http://www.w3.org/WAI/ER/EARL/nmg-strawman#validity> 'http://www.w3.org/WAI/ER/EARL/nmg-strawman#fail'
+}
+
+[query7]
+select ?p ?o
+where {
+<http://www.eiao.net/rdf/2.0/#www.eiao.net.1.0.RelaxedWAM.UWEM.B.10.11.2.2.HTML.DEF.2.1-A22368586> ?p ?o 
+}
+
+[query8]
+select ?p 
+where {
+<http://www.eiao.net/rdf/2.0/#www.eiao.net.1.0.RelaxedWAM.UWEM.B.10.11.2.2.HTML.DEF.2.1-A22368570> ?p <http://www.alopecia.eu.com/questions.html>
+}
+
+
+[query9]
+select ?s ?p 
+where {
+?s ?p <http://www.alopecia.eu.com/questions.html> 
+}
+
+[query10]
+select ?X ?Y ?Z
+where {
+?X <http://www.w3.org/WAI/ER/EARL/nmg-strawman#asserts> ?Y .
+?Y <http://www.w3.org/WAI/ER/EARL/nmg-strawman#result> ?Z .
+?Z <http://www.w3.org/WAI/ER/EARL/nmg-strawman#validity> 'http://www.w3.org/WAI/ER/EARL/nmg-strawman#pass' 
+}
+
+

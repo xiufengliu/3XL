@@ -1,0 +1,11 @@
+xlclient
+xlclient.common
+xlclient.gui
+xlclient.gui.console
+xlclient.gui.menu
+xlclient.gui.opt
+xlclient.gui.opt.dbgen
+xlclient.gui.opt.load
+xlclient.gui.opt.query
+xlclient.gui.setting
+xlclient.gui.socket

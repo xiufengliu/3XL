@@ -1,0 +1,536 @@
+#!/bin/bash
+#
+# Copyright (C) 2002,2003 Graham J Williams
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License as
+# published by the Free Software Foundation; either version 2 of
+# the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
+# or email the author of this code for a copy.
+#
+# TODO
+#
+# Rewrite in Python
+#
+# ChangeLog
+#
+# 04 Mar 2004
+#   * Add font size support from Owen Kaser <owen@unbsj.ca>
+#
+# 31 Jan 2004
+#   * Add --log/-g for logscale as suggested by Saverio Perugini
+#   * For x and y range use [: instead of [0: suggested by Daniel Lemire
+#   * Turn off labels suggested by Daniel Lemire
+#    
+# 9 Oct 2003
+#   * BUG FIX: if Y axis is [0.0, 0.5, 1.0, 1.5], then it becomes [0,0,1,1]
+#     Allow user to specify number of decimal places.
+#     Use heuristic to set a default value.
+#     Bug reported by Saverio Perugini.
+#
+
+shortmsg ()
+{
+  printf "Try \`$0 --help' for more information.\n"  >/dev/stderr
+}
+
+usage ()
+{
+  printf "Usage: $0 [options] datafile [datafile] > plot.pdf
+
+  -h, --help                    Usage plus extra help
+  -t, --trend                   Draw bezier trend line
+  -s, --font-size=N             Font size (points) *not all output types*
+  -T, --type=[pdf,eps,fig,png]	Output type to generate
+  -v, --values                  Include y values with corresponding bar
+  -m, --maxy=value		The y axis maximum value
+      --auto-miny               Choose min y value from data (0 otherwise)
+  -n, --no-heading              Do not include a heading
+  -r, --rotate                  Rotate the x axis labels
+  -l, --line-at=N               Draw a line parallel to x axis at N
+  -d, --decimals=N              Number of yaxis decimal places
+  -g, --log=A                   Use log scale on axis A (x or y or xy)
+      --noxlabel,--noylabel     No labels on the x or y axis
+" >/dev/stderr
+}
+
+help ()
+{
+  printf "
+Generates a bar chart of the supplied data. The first line of the
+(first) data file is the plot title. The second line contains column
+titles (with _ converted to space). The remaining lines contain the x
+axis label and the y value on each line, space separated.  Output is 
+written to standard out.
+
+If labels or any other entity is poorly placed then generate FIG using
+\`-T fig' and modify with xfig then export to PDF.
+
+Sample input file:
+  DC 23: Eye and Ear Diseases Aggregate
+  Financial_Year Total_Cost
+  94/95 12340
+  95/96 52.35
+  96/97 311361.8
+  97/98 450102.8
+
+" >/dev/stderr
+}  
+
+#
+# Default options: There's lots more we could parameterise!
+#
+font_points=10
+display_values=0
+force=0
+trend_line=0
+ymax=""
+ymin="0"
+typeout="pdf"
+datastart=3 # line of input files where data to be plotted starts
+xshift=0.3 # amount by which y value labels are moved
+xticsopts="" # options for xtics
+lineat="" # draw a line parallel to x axis
+heading=1
+decimals=-1
+logscale=""
+noxlabel=0
+noylabel=0
+noxticlabels=0
+noyticlabels=0
+
+#
+# Handle command line: getopt reads the command line, checks for errors
+# then generates a reformatted, reordered and well formed command line.
+# Thus the user can make the command line as ugly as they like :-)
+#
+command_line=$(getopt --options s:d:fg:hl:m:nrtT:v \
+ --longoptions font-size:,decimals:,force,log:,help,line-at:,maxy:,auto-miny,no-heading,rotate,trend,type,values:,noxlabel,noylabel,noxticlabels,noyticlables \
+ --alternative --name "$0" -- "$@")
+
+if [ $? -gt 0 ] ; then
+  exit 1
+fi
+
+#
+# Replace old command line with newly parsed command line
+#
+eval set -- "$command_line"
+
+#
+# Now process all arguments
+#
+while true ; do
+    case "$1" in
+	-s|--font-size) font_points="$2" ; shift 2;; 
+	-d|--decimals)  decimals="$2" ; shift 2 ;;
+	-h|--help) 	usage ; help ; exit 0 ;;
+	-f|--force)	force=1 ; shift ;;
+	-g|--log)       logscale="$2" ; shift 2 ;;
+	-l|--line-at)   lineat="f(x)=$2,f(x) notitle," ; shift 2 ;;
+	-m|--maxy)	ymax="$2" ; shift 2 ;;
+	--auto-miny)	ymin="" ; shift ;;
+	-n|--no-heading) heading=0 ; shift ;; 
+	--noxlabel)     noxlabel=1 ; shift ;;
+	--noylabel)     noylabel=1 ; shift ;;
+	-r|--rotate)    xticsopts="rotate" ; xlabelshift="0,-2" ; shift ;;
+	-t|--trend)	trend_line=1 ; shift ;;
+        -T|--type)	typeout="$2" ; shift 2 ;;
+	-v|--values)	display_values=1 ; shift ;;
+	--) 		shift ; break ;;
+	*) 		echo "$0: Internal error 1!" ; exit 1 ;;
+    esac
+done
+
+#
+# Check supplied arguments
+#
+if [   "${typeout}" != "pdf" \
+    -a "${typeout}" != "eps" \
+    -a "${typeout}" != "fig" \
+    -a "${typeout}" != "png" ] ; then
+  printf "$0: allowed types are [pdf,eps,fig,png], not: ${typeout}\n" \
+       >/dev/stderr
+  shortmsg
+  exit 1
+fi
+
+plotcount=$#
+if [ ${plotcount} -lt 1 -o ${plotcount} -gt 3 ] ; then
+  printf "$0: expecting 1-3 data files but got ${plotcount}: $*\n" \
+       >/dev/stderr
+  shortmsg
+  exit 1
+fi
+
+#
+# Record the data file names and check it exists
+#
+datafile1=$1
+if [ ! -f ${datafile1} ] ; then
+  printf "$0: data file '%s' not found\n" ${datafile1} >/dev/stderr
+  exit 1
+fi
+
+if [ ${plotcount} -gt 1 ] ; then
+    datafile2=$2
+    if [ ! -f ${datafile2} ] ; then
+	printf "$0: data file '%s' not found\n" ${datafile2} >/dev/stderr
+	exit 1
+    fi
+fi
+
+if [ ${plotcount} -gt 2 ] ; then
+    datafile3=$3
+    if [ ! -f ${datafile3} ] ; then
+	printf "$0: data file '%s' not found\n" ${datafile3} >/dev/stderr
+	exit 1
+    fi
+fi
+#
+# Check decimal places
+#
+if [ ${decimals} -lt 0 ]; then
+  maximum=$(tail -n +3 -q ${datafile1} ${datafile2} ${datafile3} \
+           | cut -d" " -f2 | sort -n | tail -1)
+  intmax=$(echo ${maximum} | cut -d. -f1)
+  # Seems like we only need do this if less than 5!
+  if [ ${intmax} -lt 5 ]; then
+    decimals=$(echo ${maximum} | cut -d. -f2 | tr -d '\n' | wc -m)
+  else
+    decimals=0
+  fi
+fi
+
+#
+# Check the logscale argument
+#
+#if [ "$logscale" != "" -a "$logscale" != "x" -a "$logscale" != "y" ]; then
+#    printf "$0: logscal must be one of x or y, not %s\n" ${logscale} \
+#      >/dev/stderr
+#    exit 1
+#fi
+
+#
+# Extract the plot title from first line and if 2 plots, combine
+#
+bartitle1=$(head -1 ${datafile1})
+if [ ${plotcount} -gt 1 ] ; then
+    bartitle2=$(head -1 ${datafile2})
+    if [ "${bartitle1}" = "${bartitle2}" ] ; then
+      bartitle=${bartitle1}
+    else
+    bartitle=""
+    # Extract common leading substring
+    for i in ${bartitle1}; do
+	if (echo " ${bartitle2}" | egrep "^${bartitle} *$i" > /dev/null); then
+	    bartitle="${bartitle} $i"
+	fi
+    done
+    bartitle=$(echo ${bartitle} | sed 's|^ ||')
+    # Grab the differening tails and join
+    if [ "${bartitle}" ]; then
+	bartitle1=$(echo ${bartitle1} | sed "s|${bartitle} ||")
+	bartitle2=$(echo ${bartitle2} | sed "s|${bartitle} ||")
+	if [ ${plotcount} -gt 2 ] ; then
+	    bartitle3=$(head -1 ${datafile3})
+	    bartitle3=$(echo ${bartitle3} | sed "s|${bartitle} ||")
+        fi
+	# bartitle="${bartitle} ${bartitle1} and ${bartitle2}"
+    else
+	bartitle="${bartitle1} and ${bartitle2}"
+
+    fi
+    fi
+  else
+    bartitle="${bartitle1}"
+fi
+
+if [ ${heading} -eq 0 ]; then
+  bartitle=""
+fi
+
+#
+# Extract the x and y labels
+#
+xlabel=$(head -2 ${datafile1} | tail +2 | awk '{print $1}' | sed 's|_| |g')
+ylabel=$(head -2 ${datafile1} | tail +2 | awk '{print $2}' | sed 's|_| |g')
+if [ ${plotcount} -gt 1 ] ; then
+  xlabel2=$(head -2 ${datafile2} | tail +2 | awk '{print $1}' | sed 's|_| |g')
+  ylabel2=$(head -2 ${datafile2} | tail +2 | awk '{print $2}' | sed 's|_| |g')
+  if [ ${plotcount} -gt 2 ] ; then
+      xlabel3=$(head -2 ${datafile3} | tail +2 | awk '{print $1}' | sed 's|_| |g')
+      ylabel3=$(head -2 ${datafile3} | tail +2 | awk '{print $2}' | sed 's|_| |g')
+  fi
+  if [ ${force} -eq 0 -a "${xlabel}" != "${xlabel2}" ] ; then
+    printf "$0: x labels in data files differ: \`${xlabel1}' and \`${xlabel2}'
+use -f to forcibly ignore mismatch
+" >/dev/stderr
+    exit 1
+  fi
+  if [ ${force} -eq 0 -a "${ylabel}" != "${ylabel2}" ] ; then
+    printf "$0: y labels in data files differ: \`${ylabel1}' and \`${ylabel2}'
+use -f to forcibly ignore mismatch
+" >/dev/stderr
+    exit 1
+  fi
+fi
+
+#
+# How many points are there
+#
+xmax=$(tail +${datastart} ${datafile1} | wc -l | awk '{print $1+1}')
+if [ ${plotcount} -gt 1 ] ; then
+    xmax2=$(tail +${datastart} ${datafile2} | wc -l | awk '{print $1+1}')
+    if [ $xmax2 -gt $xmax ] ; then
+      xmax=$xmax2
+    fi
+fi
+
+#
+# Generate the list of x axis labels from first column
+#
+xtics=$(tail +${datastart} ${datafile1} \
+	| awk '{printf("\"%s\" %d, ", $1, NR)}' \
+	| sed 's|, $||' | sed 's|_| |g')
+if [ ${plotcount} -gt 1 ] ; then
+    if [ $xmax -eq $xmax2 ] ; then
+      xtics=$(tail +${datastart} ${datafile2} \
+	| awk '{printf("\"%s\" %d, ", $1, NR)}' \
+	| sed 's|, $||' | sed 's|_| |g')
+    fi
+fi
+
+#
+# Set defaults for different number of plots
+#
+boxwidth=0.5
+if [ ${plotcount} -gt 1 ] ; then
+  boxwidth=0.2
+fi
+
+(
+if [ ${display_values} -eq 1 ]; then
+  #
+  # Add labels to show the actual y values for each bar
+  # Font does not work for FIG export.  Does for PS export.
+  # So fix font size up in the post processed FIG.
+  #
+  tail +${datastart} ${datafile1} \
+  | awk -vXSHIFT=${xshift} '{printf("set label \"%d\" at %f,%d right font \"Times,${font_points}\"\n", 
+          $2, NR-XSHIFT, $2)}';
+  if [ ${plotcount} -eq 2 ] ; then
+      tail +${datastart} ${datafile2} \
+	  | awk -vXSHIFT=${xshift} '{printf("set label \"%d\" at %f,%d left font \"Times,${font_points}\"\n", 
+                  $2, NR+XSHIFT, $2)}'
+  fi
+  if [ ${plotcount} -eq 3 ] ; then
+      tail +${datastart} ${datafile2} \
+	  | awk -vXSHIFT=${xshift} '{printf("set label \"%d\" at %f,%d left font \"Times,${font_points}\"\n", 
+                  $2, NR+XSHIFT, $2)}'
+      tail +${datastart} ${datafile3} \
+	  | awk -vXSHIFT=${xshift} '{printf("set label \"%d\" at %f,%d left font \"Times,${font_points}\"\n", 
+                  $2, NR+XSHIFT+XSHIFT+20, $2)}'
+  fi
+fi
+
+if [ -n "${logscale}" ]; then
+  printf "set log %s\n" ${logscale}
+  ymin=""  
+fi
+
+if [ ${noxlabel} -eq 0 ]; then
+  printf "set xlabel '%s' %s\n" "${xlabel}" "${xlabelshift}" 
+fi
+
+if [ ${noylabel} -eq 0 ]; then
+  printf "set ylabel '%s'\n" "${ylabel}"
+fi
+
+printf "
+#set size 1.1,1.1
+set title '%s'
+set terminal fig color fontsize ${font_points}
+set xtics %s (%s)
+set boxwidth %s
+set xrange [0:%d]
+set yrange [%s:%s]
+set format y '%%.%sfXX'
+set grid noxtics ytics
+#
+# Use boxes linestyle 2 for the first plot to get distinct colour.
+# Use boxes linestyle 3 for the second plot to get distinct colour.
+# Use bezier (rather than csplines since smoother) for the trend line.
+# Plot data is part of the inout stream using gnuplot '-'.
+# Each dataset being plotted is spearated by a "e"
+# 
+plot '-' notitle with boxes 2" \
+"${bartitle}" "${xticsopts}" "${xtics}" \
+${boxwidth} ${xmax} "${ymin}" ${ymax} "${lineat}" ${decimals};
+
+if [ ${plotcount} -gt 1 ] ; then
+  printf ", '-' notitle with boxes 3"
+fi
+
+if [ ${plotcount} -gt 2 ] ; then
+  printf ", '-' notitle with boxes 4"
+fi
+
+if [ ${trend_line} -eq 1 ]; then
+  printf ", '-' smooth bezier notitle 1"
+  if [ ${plotcount} -gt 1 ] ; then
+      printf ", '-' smooth bezier notitle 2"
+  fi
+fi
+
+printf "\n"
+
+#
+# Generate the actual plot data.
+# For 2 plots plotfile 1 is placed at 0.9 xpoints 
+# and plotfile 2 at 1.1 xpoints
+# Thus with boxwidth 0.2 these butt up against each other
+#
+if [ ${plotcount} -eq 1 ] ; then
+    tail +${datastart} ${datafile1} | awk '{print NR,$2}';
+    printf "e\n"
+    if [ ${trend_line} -eq 1 ]; then
+	tail +${datastart} ${datafile1} | awk '{print NR,$2}';
+	printf "e\n"
+    fi
+elif [ ${plotcount} -eq 2 ] ; then
+    tail +${datastart} ${datafile1} | awk '{printf("%.1f %s\n", NR-0.1, $2)}' ;
+    printf "e\n" ;
+    tail +${datastart} ${datafile2} | awk '{printf("%.1f %s\n", NR+0.1, $2)}' ;
+    printf "e\n" ;
+    if [ ${trend_line} -eq 1 ]; then
+	tail +${datastart} ${datafile1} | awk '{printf("%.1f %s\n", NR-0.1, $2)}' ;
+	printf "e\n" ;
+	tail +${datastart} ${datafile2} | awk '{printf("%.1f %s\n", NR+0.1, $2)}' ;
+	printf "e\n"
+    fi
+elif [ ${plotcount} -eq 3 ] ; then
+    tail +${datastart} ${datafile1} | awk '{printf("%.1f %s\n", NR-0.2, $2)}' ;
+    printf "e\n" ;
+    tail +${datastart} ${datafile2} | awk '{printf("%.1f %s\n", NR, $2)}' ;
+    printf "e\n" ;
+    tail +${datastart} ${datafile3} | awk '{printf("%.1f %s\n", NR+0.2, $2)}' ;
+    printf "e\n" ;
+    if [ ${trend_line} -eq 1 ]; then
+	tail +${datastart} ${datafile1} | awk '{printf("%.1f %s\n", NR-0.2, $2)}' ;
+	printf "e\n" ;
+	tail +${datastart} ${datafile2} | awk '{printf("%.1f %s\n", NR, $2)}' ;
+	printf "e\n"
+	tail +${datastart} ${datafile3} | awk '{printf("%.1f %s\n", NR+0.2, $2)}' ;
+	printf "e\n"
+    fi
+fi
+) \
+| gnuplot \
+| awk '
+BEGIN {convert=0}
+#
+# Convert rectangles with line stlye 1 to filled rectangles.
+#
+/2 1 0 1 1 1 10 0 -1     0.000 0 0 0 0 0 5/ \
+{
+  print "2 1 0 1 -1 -1 10 0 6     0.000 0 0 0 0 0 5";
+  next;
+}
+#
+# Convert rectangles with line stlye 2 to filled rectangles.
+#
+/2 1 0 1 2 2 10 0 -1     0.000 0 0 0 0 0 5/ \
+{
+  print "2 1 0 1 -1 -1 10 0 4     0.000 0 0 0 0 0 5";
+  next;
+}
+#
+# Convert rectangles with line stlye 3 to filled rectangles.
+#
+/2 1 0 1 3 3 10 0 -1     0.000 0 0 0 0 0 5/ \
+{
+  print "2 1 0 1 -1 -1 10 0 2     0.000 0 0 0 0 0 5";
+  next;
+}
+#
+# Convert the blue bezier trend line to a dashed line.
+#
+/2 1 0 1 1 1 10 0 -1     0.000 0 0 0 0 0 / \
+{
+  $3 = 1;
+  $10 = 4.0;
+  print;
+  next;
+}
+#
+# Convert the yvalues to a smaller font.
+# Column  1: A 4 identifies a text object.
+# Column  2: The yvalue labels are either left (0) or right (1) justified
+# Column 11: The text length. Accept any. Multiply by 8/10.
+#
+/4 (0|2) 0 0 -1 0 10.000  0.000 0 125.000 ([0-9]+).000/ && ! /XX\\001$/ \
+{
+  $7 = "6"
+  $10 = "60"
+  $11 = $11*8/10
+}
+/XX\\001$/ \
+{
+  gsub("XX","")
+}
+{print}
+' \
+| perl -pi -e '
+#
+# Add commas between thousands.
+#
+s|^4 (.*\d)(\d\d\d)\\001$|4 $1,$2\\001|; 
+s|^4 (.*\d)(\d\d\d),(\d\d\d)\\001$|4 $1,$2,$3\\001|; 
+' \
+| \
+( 
+  cat ; 
+  #
+  # Now add a legend.  Absolute positioning will need to be
+  # adjusted if font sizes have been changed (not done)
+  #
+  if [ ${plotcount} -eq 2 ] ; then
+  printf "2 1 0 1 -1 -1 10 0 5 0.000 0 0 0 0 0 5
+	 2400 1800 2400 1684 2521 1684 2521 1800 2400 1800
+2 1 0 1 -1 -1 10 0 2 0.000 0 0 0 0 0 5
+	 2400 1950 2400 1834 2521 1834 2521 1950 2400 1950
+4 0 0 50 0 0 10 0.0000 4 105 450 2625 1786 %s\\\001
+4 0 0 50 0 0 10 0.0000 4 105 450 2625 1943 %s\\\001
+" "${bartitle1}" "${bartitle2}"
+  fi
+  if [ ${plotcount} -eq 3 ] ; then
+  printf "2 1 0 1 -1 -1 10 0 6 0.000 0 0 0 0 0 5
+	 2400 1800 2400 1684 2521 1684 2521 1800 2400 1800
+2 1 0 1 -1 -1 10 0 4 0.000 0 0 0 0 0 5
+	 2400 1950 2400 1834 2521 1834 2521 1950 2400 1950
+2 1 0 1 -1 -1 10 0 2 0.000 0 0 0 0 0 5
+	 2400 2100 2400 1984 2521 1984 2521 2100 2400 2100
+4 0 0 50 0 0 10 0.0000 4 105 450 2625 1786 %s\\\001
+4 0 0 50 0 0 10 0.0000 4 105 450 2625 1943 %s\\\001
+4 0 0 50 0 0 10 0.0000 4 105 450 2625 2100 %s\\\001
+" "${bartitle1}" "${bartitle2}" "${bartitle3}" 
+  fi
+) \
+| (case "${typeout}" in
+    "fig")      cat ;;
+    "eps")	fig2dev -L eps -n "${bartitle}" ;;
+    "pdf")	fig2dev -L pdf -n "${bartitle}" ;;
+    "png")	fig2dev -L png -m 2 \
+	        | convert -transparent white - - ;;
+    *)		echo "$0: Internal error 2!" ; exit 1 ;;
+   esac)

@@ -1,0 +1,12 @@
+1.000000 354.640005935 2819.76
+2.000000 838.597629117 2384.93
+3.000000 1249.813518852 2400.35
+4.000000 1566.528200295 2553.41
+5.000000 2123.067891667 2355.08
+6.000000 3117.847989766 1924.40
+7.000000 3360.413065293 2083.08
+8.000000 4405.131631996 1816.06
+
+#set xlabel "Triple Number (*1M)" 
+#set ylabel "Loading time (s)" 
+#plot "copy_ar_b1G_commit.dat" u 1:2 title "ValueHolder Buffer CacheSize=1G" w linespoints, "bdb_arr_b1G_commit.dat"  u 1:2 title "Berkley DB CacheSize=1G" w linespoints,"3store_commit.dat" u 1:2 title "3Store" w linespoints

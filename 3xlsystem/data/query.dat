@@ -1,0 +1,55 @@
+#  Array        multiProptytable   3store
+#1. (*,*,*) 
+35.8288913535	40.98522407875	   70.69867954579999
+
+
+#2. (s,*,*)
+#(www.eiao.net.2.0.RelaxedWAM.EIAO.TECH.1.2-M440251230,*,*)
+0.00512148185    0.00827181595     0.03666421320000000000
+
+
+#(http://www.eiao.net/rdf/2.0#PageSurvey_http://www.eiao.net/rdf/2.0/PageSurvey_197,*,*) --Multiproperty value
+0.01841080005     0.0266240123      0.07584957750000000000
+
+#3. (*,p,*)
+# (*,http://www.w3.org/WAI/ER/EARL/nmg-strawman#asserts,*) --multiproperty
+select ?s ?o where {?s <http://www.w3.org/WAI/ER/EARL/nmg-strawman#asserts> ?o .}
+
+10.79709804935   8.21114084675     8.03921808845000000000
+
+#(*,http://www.eiao.net/rdf/2.0#headercache_control,*)
+0.0087849119       0.01172254425      0.02684371195000000000
+
+#4. (*,*,o)
+#(*,*,www.eiao.net.2.0.RelaxedWAM.EIAO.TECH.1.2-L440245817) - Object property
+1.533999698        1.68768781705       0.02563154675000000000
+
+#(*,*, Microsoft-IIS/6.0)
+1.51048447485      1.47571484985     0.08309592755000000000       
+
+
+#5. (s,p,*)
+#(http://www.eiao.net/rdf/2.0#PageSurvey_http://www.eiao.net/rdf/2.0/PageSurvey_78,http://www.w3.org/WAI/ER/EARL/nmg-strawman#asserts,*)
+0.0473071333      0.06103592785      0.06378846695000000000
+
+#(http://www.eiao.net/rdf/2.0#PageSurvey_http://www.eiao.net/rdf/2.0/PageSurvey_header150,http://www.eiao.net/rdf/2.0#headercache_control,*)
+0.00410713515     0.00476941195      0.02413828800000000000
+
+#6. (s,*,o)
+#(http://www.eiao.net/rdf/2.0#PageSurvey_http://www.eiao.net/rdf/2.0/PageSurvey_78,*,www.eiao.net.2.0.RelaxedWAM.UWEM.B.10.11.2.3.HTML.DEF.2.1-A264644335)
+0.0257306374     0.04294918065       0.03039633545000000000    
+
+#(http://www.eiao.net/rdf/2.0#PageSurvey_http://www.eiao.net/rdf/2.0/PageSurvey_header150,*,Microsoft-IIS/6.0)
+0.00923620865    0.00907480915       0.02694606450000000000             
+
+#7. (*,p,o)
+#(*,http://www.w3.org/WAI/ER/EARL/nmg-strawman#asserts,www.eiao.net.2.0.RelaxedWAM.UWEM.B.10.11.2.3.HTML.DEF.2.1-A264644335)
+select ?s where {?s <http://www.w3.org/WAI/ER/EARL/nmg-strawman#asserts> <www.eiao.net.2.0.RelaxedWAM.UWEM.B.10.11.2.3.HTML.DEF.2.1-A264644335> .}
+0.0177180968      0.0052497384      0.01996330510000000000                  
+
+#(*,http://www.eiao.net/rdf/2.0#headercache_control,Microsoft-IIS/6.0)
+
+#8. (s,p,o)
+#(http://www.eiao.net/rdf/2.0#PageSurvey_http://www.eiao.net/rdf/2.0/PageSurvey_78,http://www.w3.org/WAI/ER/EARL/nmg-strawman#asserts,www.eiao.net.2.0.RelaxedWAM.UWEM.B.10.11.2.3.HTML.DEF.2.1-A264644335)
+0.01930484515    0.0309065781          0                    
+

@@ -1,0 +1,2 @@
+(type GraduateStudent ?X)
+(takesCourse ?X http://www.Department0.University0.edu/GraduateCourse0)

@@ -1,0 +1,132 @@
+Q1: (s, p, *)  
+singled-value object property: assertion (Domain)---> subject -->testsubject (Range)
+(http://www.eiao.net/rdf/2.0/#www.eiao.net.1.0.RelaxedWAM.UWEM.B.10.11.2.2.HTML.DEF.2.1-A22368586,http://www.w3.org/WAI/ER/EARL/nmg-strawman#subject,*)
+
+SELECT ?o
+WHERE {
+ <http://www.eiao.net/rdf/2.0/#www.eiao.net.1.0.RelaxedWAM.UWEM.B.10.11.2.2.HTML.DEF.2.1-A22368586> <http://www.w3.org/WAI/ER/EARL/nmg-strawman#subject> ?o .
+}
+
+RDF3X
+----------------------------------
+59
+
+
+Q2: (s, p, *): single-valued dataproperty:
+(http://www.eiao.net/rdf/2.0#Scenario_37, http://www.eiao.net/rdf/2.0#typeofscenario, *)
+select ?o 
+where {
+<http://www.eiao.net/rdf/2.0#Scenario_37> <http://www.eiao.net/rdf/2.0#typeofscenario> ?o .
+}
+
+RDF3X
+----------------------------------------
+81
+
+
+Q3: (s, p, *) mulit-valued object property: rangelocation(Domain)->page --> testsubject( Range)
+(http://www.eiao.net/rdf/2.0#Scenario_10_range-26,http://www.eiao.net/rdf/2.0#page,*)
+select ?o 
+where {
+<http://www.eiao.net/rdf/2.0#Scenario_10_range-26> <http://www.eiao.net/rdf/2.0#page> ?o .
+}
+
+RDF3X
+----------------------------------
+591
+
+
+Q4: (s, p, *): multi-valued data property:
+(http://www.eiao.net/rdf/2.0#PageSurvey_http://www.eiao.net/rdf/2.0/PageSurvey_header78, http://www.eiao.net/rdf/2.0#headerserver, *)
+select ?o 
+where {
+<http://www.eiao.net/rdf/2.0#PageSurvey_http://www.eiao.net/rdf/2.0/PageSurvey_header78> <http://www.eiao.net/rdf/2.0#headerserver> ?o .
+}
+
+RDF3X
+----------------------------------
+91
+
+
+
+Q5 (*, p, *):
+Singled-valued: metadata, assertion (Domain)---> subject -->testsubject (Range)
+(*,http://www.w3.org/WAI/ER/EARL/nmg-strawman#subject,*)
+select ?s ?o
+where {
+?s <http://www.w3.org/WAI/ER/EARL/nmg-strawman#subject> ?o .
+}
+RDF3X
+----------------------------------
+99369
+
+
+Q6: (*, p, o)
+(*, http://www.w3.org/WAI/ER/EARL/nmg-strawman#validity, http://www.w3.org/WAI/ER/EARL/nmg-strawman#fail)
+select ?s
+where {
+?s <http://www.w3.org/WAI/ER/EARL/nmg-strawman#validity> 'http://www.w3.org/WAI/ER/EARL/nmg-strawman#fail' .
+}
+RDF3X
+----------------------------------
+33466
+
+
+
+Q7: (s, *, *) 
+assertion (Domain)
+(http://www.eiao.net/rdf/2.0/#www.eiao.net.1.0.RelaxedWAM.UWEM.B.10.11.2.2.HTML.DEF.2.1-A22368586,*,*)
+select ?p ?o
+where {
+<http://www.eiao.net/rdf/2.0/#www.eiao.net.1.0.RelaxedWAM.UWEM.B.10.11.2.2.HTML.DEF.2.1-A22368586> ?p ?o .
+}
+RDF3X
+----------------------------------
+46
+
+
+Q8: (s, *, o)
+(http://www.eiao.net/rdf/2.0/#www.eiao.net.1.0.RelaxedWAM.UWEM.B.10.11.2.2.HTML.DEF.2.1-A22368586, *, http://www.alopecia.eu.com/questions.html)
+select ?p 
+where {
+<http://www.eiao.net/rdf/2.0/#www.eiao.net.1.0.RelaxedWAM.UWEM.B.10.11.2.2.HTML.DEF.2.1-A22368570> ?p <http://www.alopecia.eu.com/questions.html> .
+}
+
+RDF3X
+----------------------------------
+38
+
+
+
+
+Q9: (*, *, o)
+(*, *, http://www.alopecia.eu.com/questions.html)
+select ?s ?p 
+where {
+?s ?p <http://www.alopecia.eu.com/questions.html> .
+}
+RDF3X
+----------------------------------
+225
+
+
+Q10:
+(?X, http://www.w3.org/1999/02/22-rdf-syntax-ns#type, pagesurvey)
+(?Y, http://www.w3.org/1999/02/22-rdf-syntax-ns#type, assertion)
+(?Z, http://www.w3.org/1999/02/22-rdf-syntax-ns#type, result)
+(?X, http://www.w3.org/WAI/ER/EARL/nmg-strawman#asserts, ?Y)
+(?Y, http://www.w3.org/WAI/ER/EARL/nmg-strawman#result, ?Z)
+(?Z, http://www.w3.org/WAI/ER/EARL/nmg-strawman#validity, http://www.w3.org/WAI/ER/EARL/nmg-strawman#pass)
+select ?X ?Y ?Z
+where {
+#?X <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/WAI/ER/EARL/nmg-strawman#pagesurvey> .
+#?Y <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/WAI/ER/EARL/nmg-strawman#assertion> .
+#?Z <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/WAI/ER/EARL/nmg-strawman#result> .
+?X <http://www.w3.org/WAI/ER/EARL/nmg-strawman#asserts> ?Y .
+?Y <http://www.w3.org/WAI/ER/EARL/nmg-strawman#result> ?Z .
+?Z <http://www.w3.org/WAI/ER/EARL/nmg-strawman#validity> <http://www.w3.org/WAI/ER/EARL/nmg-strawman#pass> .
+}
+RDF3X
+----------------------------------
+139951
+

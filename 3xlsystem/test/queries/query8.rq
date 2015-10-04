@@ -1,0 +1,5 @@
+(type Student ?X)
+(type Department ?Y)
+(memberOf ?X ?Y)
+(subOrganizationOf ?Y http://www.University0.edu)
+(emailAddress ?X ?Z)

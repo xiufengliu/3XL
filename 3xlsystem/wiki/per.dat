@@ -1,0 +1,22 @@
+# 1            2                          3                                   4                      5                                 6                        7
+25364872 635.892326502 39888.627276775645 644.482182166 39356.97945093343  538.989293132 47060.06654159654 
+50742381 1433.472765081 35398.21769626209 1689.345427247 30036.711368551227 1081.985474712 46897.4696850773
+76122861 2108.58353271 36101.42060730464 2707.401485404 28116.5765071747  1604.277467646 47449.93464983158
+100000000 2764.577974875 36171.886236821185 3644.864442591 27435.862588325417 2097.426479695 47677.475691325126
+
+reset
+set xtics nomirror # no mirror on X
+set ytics nomirror # no mirror on Y
+set xlabel "Triple number (M)"
+set ylabel "Loading time (s)"
+set key left top
+
+set xrange[20:100]
+set yrange[0:4000]
+set ytics 0, 600
+set xtics 20
+
+set title "Performance study of different buffer schemes"
+plot  "per.dat" u($1/1000000.0):($4) t "MultiBuffers+BDB" w linespoints, "per.dat" u($1/1000000.0):($2) t "Onebuffer+BDB" w linespoints,  "per.dat" u($1/1000000.0):($6) t "MultiBuffers" w linespoints
+
+
