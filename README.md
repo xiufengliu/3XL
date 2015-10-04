@@ -26,10 +26,10 @@ Start the 3XL server by bin/startserver.sh
 Start the client by bin/startclient.sh
 * **Use the command Line**
 
-* Setup the running environment:
+* *Setup the running environment:*
 > - export LIB=`pwd`/lib
 > - export CLASSPATH=.:3xlsystem.jar;$LIB/je-4.0.103.jar:$LIB/commons-collections-3.2.1.jar:$LIB/postgresql-8.3-604.jdbc4.jar:$LIB/owlapi-bin.jar:$LIB/commons-dbutils-1.3.jar:$LIB/SuperCSV-1.52.jar:$LIB/commons-io-1.4.jar
-> - Create the database schema:
+* *Create the database schema:*
 > - java -cp $CLASSPATH xlsystem.DBMain [--verbose] [--config=/path/to/config.xml]
 * *Load:*
 > - java -Xms1024m -Xmx2500m -XX:-UseGCOverheadLimit -XX:+UseParallelGC -XX:+UseParallelOldGC -cp $CLASSPATH xlsystem.LoadMain [--timing] [--config=/path/to/config.xml] --src=/path/to/ntriple
