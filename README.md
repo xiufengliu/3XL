@@ -47,6 +47,6 @@ Currently, 3XL only supports NTriple data loading.
  
 Publication
 ========================
-Xiufeng Liu, Christian Thomsen, and Torben Bach Pedersen: 3XL: Supporting efficient operations on very large OWL Lite triple-stores. Information Systems 36(4): 765-781, 2011 [PDF](https://www.dropbox.com/s/iinsekq7hfyjo2o/3XL.pdf?dl=0).
+- Xiufeng Liu, Christian Thomsen, and Torben Bach Pedersen: 3XL: Supporting efficient operations on very large OWL Lite triple-stores. Information Systems 36(4): 765-781, 2011,  [PDF](https://www.dropbox.com/s/iinsekq7hfyjo2o/3XL.pdf?dl=0).
 
-Xiufeng Liu, Christian Thomsen, and Torben Bach Pedersen: 3XL: An Efficient DBMS-Based Triple-Store. In Proc. of DEXA Workshops pp. 284-288, 2012. 
+- Xiufeng Liu, Christian Thomsen, and Torben Bach Pedersen: 3XL: An Efficient DBMS-Based Triple-Store. In Proc. of DEXA Workshops pp. 284-288, 2012. 
